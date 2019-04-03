@@ -13,7 +13,7 @@ public class AdminMain {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 
-		/*String menu="���̽�Ƽ";//�޴��� �ֹ��Ǿ��ٰ� ����
+		/*String menu="���̽�Ƽ";//메뉴가 주문되었다고 가정
 		PCDao PCDao=new PCDao();
 		Food food=PCDao.getFood(menu);
 		System.out.println(food);
