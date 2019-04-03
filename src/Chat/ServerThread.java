@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 public class ServerThread extends Thread{
- //¸â¹öº¯¼ö·Î ¼±¾ğ
+ //ë©¤ë²„ë³€ìˆ˜ë¡œ ì„ ì–¸
  private Socket socket;
  private BufferedReader br = null;
  private PrintWriter pw = null;
@@ -16,12 +16,12 @@ public class ServerThread extends Thread{
  ServerThread(Socket client){
   this.socket = client;
  }
- //¿À¹ö¶óÀÌµùÀÏ °æ¿ì throw ºÒ°¡. 
+ //ì˜¤ë²„ë¼ì´ë”©ì¼ ê²½ìš° throw ë¶ˆê°€. 
  public void run(){
   try{
    service();
   }catch(IOException e){
-   System.out.println("**"+userIP+"´Ô Á¢¼Ó Á¾·á.");
+   System.out.println("**"+userIP+"ë‹˜ ì ‘ì† ì¢…ë£Œ.");
   }finally{
    try {
     closeAll();
@@ -39,10 +39,10 @@ public class ServerThread extends Thread{
   while(true){
    str = br.readLine();
    if(str == null){
-    System.out.println(userIP+"´ÔÀÌ ¿¬°áÀ» Á¾·áÇß½À´Ï´Ù.");
+    System.out.println(userIP+"ë‹˜ì´ ì—°ê²°ì„ ì¢…ë£Œí–ˆìŠµë‹ˆë‹¤.");
     break;
    }
-   System.out.println(userIP+"´Ô: "+str);
+   System.out.println(userIP+"ë‹˜: "+str);
    pw.println(str);
   }
  }
@@ -55,4 +55,3 @@ public class ServerThread extends Thread{
    socket.close();
  }
 }
-

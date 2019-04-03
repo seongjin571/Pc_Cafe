@@ -41,18 +41,18 @@ public class UserChat extends JFrame implements ActionListener,Runnable,WindowLi
 		this.userName = userName;
 		setSize(550, 600);
 		setLocation(1000,180);
-		f1 = new Font("µ¸¿ò", Font.BOLD, 30);
+		f1 = new Font("ë‹ì›€", Font.BOLD, 30);
 		addWindowListener(this);
 		setTitle("SeJong Pc Cafe");
 		panel = new JPanel();
-		name = new JLabel("SeJong Pc Cafe Ã¤ÆÃ¹æ");
+		name = new JLabel("SeJong Pc Cafe ì±„íŒ…ë°©");
 		name.setFont(f1);
 		panel2 = new JPanel();
 		textArea = new JTextArea(25, 40);
 		textInput = new JTextField(20);
 		textInput.registerKeyboardAction(this, "input", KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
 				JComponent.WHEN_FOCUSED);
-		but_input = new JButton("ÀÔ·Â");
+		but_input = new JButton("ì…ë ¥");
 		but_input.setActionCommand("input");
 		but_input.addActionListener(this);
 		panel2.add(name);
@@ -82,7 +82,7 @@ public class UserChat extends JFrame implements ActionListener,Runnable,WindowLi
 
 
 	public String nowTime() {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH½Ã mmºĞ ssÃÊ");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HHì‹œ mmë¶„ ssì´ˆ");
 		LocalDateTime time = LocalDateTime.now();
 		String nowTime = " [" + time.format(formatter) + "]";
 		return nowTime;
@@ -97,13 +97,13 @@ public class UserChat extends JFrame implements ActionListener,Runnable,WindowLi
 			socket = new Socket("25.29.205.186", 3000);
 			out = new PrintWriter(socket.getOutputStream(), true);
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			textArea.append("Ã¤ÆÃÀ» ½ÃÀÛÇÕ´Ï´Ù. ¿å¼³Àº »ï°¡ÇØÁÖ¼¼¿ä.\n");
+			textArea.append("ì±„íŒ…ì„ ì‹œì‘í•©ë‹ˆë‹¤. ìš•ì„¤ì€ ì‚¼ê°€í•´ì£¼ì„¸ìš”.\n");
 		} catch (UnknownHostException e) {
-			System.err.println("localhost¿¡ Á¢±ÙÇÒ ¼ö ¾ø½À´Ï´Ù.");
+			System.err.println("localhostì— ì ‘ê·¼í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 //			System.exit(1);
 		} catch (IOException eg) {
 			eg.printStackTrace();
-			textArea.append("¿¬°á¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇÇÏ¼¼¿ä.");
+			textArea.append("ì—°ê²°ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜í•˜ì„¸ìš”.");
 		}
 		String fromServer;
 		try {

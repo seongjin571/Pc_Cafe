@@ -38,8 +38,8 @@ public class AdminGUI extends JFrame implements ActionListener, WindowListener {
 
 	public void showStock() {
 
-		Object[] colNames; // �뿴�씠由� => 1李⑥썝 諛곗뿴
-		Object[][] data; // 2李⑥썝 諛곗뿴 �뜲�씠�꽣
+		Object[] colNames;
+		Object[][] data; 
 		contentPane_sub = new JPanel();
 		setTitle("재고 관리 프로그램");
 		addWindowListener(this);

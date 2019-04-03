@@ -13,13 +13,13 @@ public class AdminMain {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 
-		/*String menu="¾ÆÀÌ½ºÆ¼";//¸Þ´º°¡ ÁÖ¹®µÇ¾ú´Ù°í °¡Á¤
+		/*String menu="ï¿½ï¿½ï¿½Ì½ï¿½Æ¼";//ï¿½Þ´ï¿½ï¿½ï¿½ ï¿½Ö¹ï¿½ï¿½Ç¾ï¿½ï¿½Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½
 		PCDao PCDao=new PCDao();
 		Food food=PCDao.getFood(menu);
 		System.out.println(food);
-		String[] ingredient=food.getIngredients().split(",");//ÁÖ¹®µÈ À½½ÄÀÇ Àç·á¸¦ ³ª´²¼­ String¿¡ ÀúÀå
-		for(int i=0;i<ingredient.length;i++) {//Àç°í ¼ö°¡ 1°³ ÀÌ°Å³ª 2°³ ÀÌ¹Ç·Î ¹è¿­¿¡ ±æÀÌ¿¡ ¸ÂÃç ¹Ýº¹
-			PCDao.useStock(ingredient[i]);//Àç°í ¼ö¸¦ ÇÑ °³¾¿ ÁÙ¿©ÁÜ
+		String[] ingredient=food.getIngredients().split(",");
+		for(int i=0;i<ingredient.length;i++) {
+			PCDao.useStock(ingredient[i]);
 		}*/
 		
 		AdminGUI window=new AdminGUI();
