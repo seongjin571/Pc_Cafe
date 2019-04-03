@@ -34,6 +34,6 @@ class string_checker{
 				input=input.replace(str, "*");		
 			}
 		}	
-		return input;	
+		return input;
 	}
 }

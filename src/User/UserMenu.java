@@ -20,7 +20,7 @@ public class UserMenu extends JFrame implements ActionListener, ItemListener{
 	private static final long serialVersionUID = 1L;
 	JLabel status0, status1, status2, status3, ice_hot, size, shot;
 	JPanel background, choice1, choice2, choice3, grid1;
-	JButton b[], chat, cancle, pay;
+	JButton b[], chat, cancle, pay,logout;
 	JRadioButton ice, hot, small, tall, large, yes, no;
 	ButtonGroup group1, group2, group3;
 	User_info u_inf = new User_info();
@@ -80,13 +80,16 @@ public class UserMenu extends JFrame implements ActionListener, ItemListener{
 
 		
 		cancle = new JButton("Cancle");
+		logout = new JButton("logout");
 		pay = new JButton("Pay");
 		
 		cancle.setBounds(490, 450, 100, 50);
+		logout.setBounds(350, 450, 100, 50);
 		pay.setBounds(680, 450, 100, 50);
 		
 		add(cancle);
 		add(pay);
+		add(logout);
 		
 		b[0].addActionListener(this);
 		b[1].addActionListener(this);
@@ -101,6 +104,7 @@ public class UserMenu extends JFrame implements ActionListener, ItemListener{
 		
 		cancle.addActionListener(this);
 		pay.addActionListener(this);
+		logout.addActionListener(this);
 
 		
 	}
@@ -319,6 +323,10 @@ public class UserMenu extends JFrame implements ActionListener, ItemListener{
 			price=0;
 			add(status3);
 		}
+		else if(e.getSource()==logout) {
+			UserMain umain = new UserMain();
+			dispose();
+		}		
 		else if(e.getSource()==b[0]) {
 			b_num=0;
 			add(status0);
