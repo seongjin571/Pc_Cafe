@@ -94,7 +94,7 @@ public class UserChat extends JFrame implements ActionListener,Runnable,WindowLi
 		// TODO Auto-generated method stub
 		Socket socket = null;
 		try {
-			socket = new Socket("25.29.205.186", 3000);
+			socket = new Socket("localhost", 3000);
 			out = new PrintWriter(socket.getOutputStream(), true);
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			textArea.append("채팅을 시작합니다. 욕설은 삼가해주세요.\n");
@@ -110,8 +110,8 @@ public class UserChat extends JFrame implements ActionListener,Runnable,WindowLi
 			String return_str;
 			string_checker ck = new string_checker();//d
 			while ((fromServer = in.readLine()) != null) {
-				return_str=ck.check(fromServer);
-				String s = return_str + " " + nowTime() + "\n";
+//				return_str=ck.check(fromServer);
+				String s = fromServer + " " + nowTime() + "\n";
 				textArea.append(s);
 			}
 		} catch (IOException e) {
