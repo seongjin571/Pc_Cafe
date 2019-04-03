@@ -33,8 +33,8 @@ public class UserMain extends JFrame {
 	Image img = null;
 	
 	public UserMain() {
-		super("Login"); //Ã¢ ÀÌ¸§ Login
-		setLayout(null); //·¹ÀÌ¾Æ¿ô ³»°¡ ¿øÇÏ´Â À§Ä¡·Î
+		super("Login"); //ì°½ ì´ë¦„ Login
+		setLayout(null); //ë ˆì´ì•„ì›ƒ ë‚´ê°€ ì›í•˜ëŠ” ìœ„ì¹˜ë¡œ
 
 		picture();
 		
@@ -42,10 +42,10 @@ public class UserMain extends JFrame {
 		
 		Button();
 		
-		setSize(650,900);//ÀüÃ¼ Ã¢ Å©±â ¼³Á¤
+		setSize(650,900);//ì „ì²´ ì°½ í¬ê¸° ì„¤ì •
 		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);//x´­·¶À» ¶§ Á¾·á
-		setResizable(false);//Ã¢ Å©±â °íÁ¤
+		setDefaultCloseOperation(EXIT_ON_CLOSE);//xëˆŒë €ì„ ë•Œ ì¢…ë£Œ
+		setResizable(false);//ì°½ í¬ê¸° ê³ ì •
 		
 		UserSeat s1 = new UserSeat();
 		
@@ -59,11 +59,11 @@ public class UserMain extends JFrame {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}//±×¸²ÆÄÀÏ °¡Á®¿À±â
+		}//ê·¸ë¦¼íŒŒì¼ ê°€ì ¸ì˜¤ê¸°
 			
 		la4 = new JLabel(new ImageIcon(img));
 		la4.setBounds(35, 10, 550, 550);
-		add(la4);// ±×¸² »ğÀÔ
+		add(la4);// ê·¸ë¦¼ ì‚½ì…
 		
 	}
 	void idpw(){
@@ -73,58 +73,58 @@ public class UserMain extends JFrame {
 		la3 = new JLabel("  ID ");
 		la3.setFont(new Font("",Font.BOLD, 26));
 		la2 = new JLabel("PW ");
-		la2.setFont(new Font("",Font.BOLD, 26));//ID, PW ±ÛÀÚ ¼³Á¤
+		la2.setFont(new Font("",Font.BOLD, 26));//ID, PW ê¸€ì ì„¤ì •
 
 		id = new JTextField(13);
 		id.setFont(new Font("",Font.BOLD, 20));
-		pw = new JPasswordField(13);//ÀÔ·Â½Ã ¡Ü·Î ÀÔ·ÂµÊ
-		pw.setFont(new Font("",Font.BOLD, 20));//id, pw ÀÔ·Â Ã¢ ±ÛÀÚ ¼³Á¤
+		pw = new JPasswordField(13);//ì…ë ¥ì‹œ â—ë¡œ ì…ë ¥ë¨
+		pw.setFont(new Font("",Font.BOLD, 20));//id, pw ì…ë ¥ ì°½ ê¸€ì ì„¤ì •
 		
 		idPanel.add(la3);
 		idPanel.add(id);
 		idPanel.setBounds(80, 620, 300, 80);
-		add(idPanel);// ID±ÛÀÚ¿Í ¹Ú½º »ğÀÔ
+		add(idPanel);// IDê¸€ìì™€ ë°•ìŠ¤ ì‚½ì…
 
 		paPanel.add(la2);
 		paPanel.add(pw);
 		paPanel.setBounds(80, 690, 300, 60);
-		add(paPanel);// PW±ÛÀÚ¿Í ¹Ú½º »ğÀÔ
+		add(paPanel);// PWê¸€ìì™€ ë°•ìŠ¤ ì‚½ì…
 
 		
 	}
 	void Button() {
 		
 		b1 = new JButton("LOGIN");
-		b2 = new JButton("JOIN");//LOGIN, JOIN ¹öÆ° »ı¼º
+		b2 = new JButton("JOIN");//LOGIN, JOIN ë²„íŠ¼ ìƒì„±
 		
 		b1.setBounds(430,615,100,125);
 		b2.setBounds(250,770,120,40);
 		add(b1);
-		add(b2);//LOGIN, JOIN ¹öÆ° ¼³Á¤ ÈÄ »ğÀÔ
+		add(b2);//LOGIN, JOIN ë²„íŠ¼ ì„¤ì • í›„ ì‚½ì…
 		
-		status = new JLabel();// id+pw º¸¿©ÁÙ label;
+		status = new JLabel();// id+pw ë³´ì—¬ì¤„ label;
 		
-		b1.addActionListener(new ActionListener() {//login¹öÆ° Å¬¸¯½Ã ¹ß»ıÇÏ´Â ¾×¼ÇÁ¤ÀÇ	
+		b1.addActionListener(new ActionListener() {//loginë²„íŠ¼ í´ë¦­ì‹œ ë°œìƒí•˜ëŠ” ì•¡ì…˜ì •ì˜	
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Object obj1 = e.getSource();
-				if((JButton) obj1 == b1) {// login¹öÆ°ÀÌ ´­¸®¸é
+				if((JButton) obj1 == b1) {// loginë²„íŠ¼ì´ ëˆŒë¦¬ë©´
 					int n =u_inf.login(id.getText(),pw.getText());
 					if(n == 2)
-						status.setText("pw¸¦ È®ÀÎÇØÁÖ½Ê½Ã¿À");
+						status.setText("pwë¥¼ í™•ì¸í•´ì£¼ì‹­ì‹œì˜¤");
 					else if(n == 3)
-						status.setText("id¸¦ È®ÀÎÇØÁÖ½Ê½Ã¿À");
+						status.setText("idë¥¼ í™•ì¸í•´ì£¼ì‹­ì‹œì˜¤");
 					else if(n == 1) {
-						dispose();//login Ã¢ »èÁ¦
+						dispose();//login ì°½ ì‚­ì œ
 						
-						UserMenu j3 = new UserMenu("Menu",id.getText());// »õ Menu Ã¢ »ı¼º
+						UserMenu j3 = new UserMenu("Menu",id.getText());// ìƒˆ Menu ì°½ ìƒì„±
 						j3.setVisible(true);
-						j3.setSize(882, 600);//Å©±â ¼³Á¤
-						j3.setLocation(500, 100);//»ı¼ºµÉ À§Ä¡ ¼³Á¤
-						j3.addWindowListener(new WindowAdapter() {//x´©¸£¸é »õÃ¢¸¸ Á¾·áµÇ°Ô
+						j3.setSize(882, 600);//í¬ê¸° ì„¤ì •
+						j3.setLocation(500, 100);//ìƒì„±ë  ìœ„ì¹˜ ì„¤ì •
+						j3.addWindowListener(new WindowAdapter() {//xëˆ„ë¥´ë©´ ìƒˆì°½ë§Œ ì¢…ë£Œë˜ê²Œ
 							public void windowClosing(WindowEvent e) {
 								j3.setVisible(false);
-								j3.dispose();//Menu Ã¢ Á¾·á
+								j3.dispose();//Menu ì°½ ì¢…ë£Œ
 							}
 						});
 					}
@@ -133,24 +133,24 @@ public class UserMain extends JFrame {
 		});	
 		
 		status.setBounds(240, 820, 150, 40);
-		status.setHorizontalAlignment(JTextField.CENTER);//°¡¿îµ¥Á¤·Ä
-		add(status);// id+pw ÀÎ status ¼³Á¤ ÈÄ »ğÀÔ
+		status.setHorizontalAlignment(JTextField.CENTER);//ê°€ìš´ë°ì •ë ¬
+		add(status);// id+pw ì¸ status ì„¤ì • í›„ ì‚½ì…
 		
-		b2.addActionListener(new ActionListener() {//join¹öÆ° Å¬¸¯½Ã ¹ß»ıÇÏ´Â ¾×¼Ç
+		b2.addActionListener(new ActionListener() {//joinë²„íŠ¼ í´ë¦­ì‹œ ë°œìƒí•˜ëŠ” ì•¡ì…˜
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Object obj2 = e.getSource();
 				
-				if((JButton) obj2 == b2) {// join¹öÆ°ÀÌ ´­¸®¸é
-					UserJoin j2 = new UserJoin("Join");// »õ join Ã¢ »ı¼º
+				if((JButton) obj2 == b2) {// joinë²„íŠ¼ì´ ëˆŒë¦¬ë©´
+					UserJoin j2 = new UserJoin("Join");// ìƒˆ join ì°½ ìƒì„±
 					j2.setVisible(true);
-					j2.setSize(550, 620);//Å©±â ¼³Á¤
-					j2.setLocation(500, 100);//»ı¼ºµÉ À§Ä¡ ¼³Á¤
-					j2.addWindowListener(new WindowAdapter() {//x´©¸£¸é »õÃ¢¸¸ Á¾·áµÇ°Ô
+					j2.setSize(550, 620);//í¬ê¸° ì„¤ì •
+					j2.setLocation(500, 100);//ìƒì„±ë  ìœ„ì¹˜ ì„¤ì •
+					j2.addWindowListener(new WindowAdapter() {//xëˆ„ë¥´ë©´ ìƒˆì°½ë§Œ ì¢…ë£Œë˜ê²Œ
 						public void windowClosing(WindowEvent e) {
 							j2.setVisible(false);
-							j2.dispose();//Join Ã¢ Á¾·á
+							j2.dispose();//Join ì°½ ì¢…ë£Œ
 						}
 					});
 				}

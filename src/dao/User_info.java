@@ -133,14 +133,14 @@ public class User_info {
 				String u_pw = rs.getString("u_pw");
 				if(u_id.equals(id)) {
 					if(u_pw.equals(pw)) {
-						result = 1;// id, pw µÑ´Ù ÀÏÄ¡
+						result = 1;// id, pw ë‘˜ë‹¤ ì¼ì¹˜
 					}
 					else
-						result = 2;// id¸¸ ÀÏÄ¡
+						result = 2;// idë§Œ ì¼ì¹˜
 				}
 			}
 			else {
-				result = 3;// id, pw µÑ´Ù ºÒÀÏÄ¡
+				result = 3;// id, pw ë‘˜ë‹¤ ë¶ˆì¼ì¹˜
 			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -284,7 +284,7 @@ public class User_info {
 				ps.setString(4, size);
 				ps.setString(5, tem);
 				result = ps.executeUpdate();
-//				AdminMain(); //¿ä±â¿ä
+//				AdminMain(); //ìš”ê¸°ìš”
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

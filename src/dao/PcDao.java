@@ -138,9 +138,9 @@ public class PcDao{
 			ps.setObject(1, ingredient);
 			rs=ps.executeQuery();
 			while (rs.next()) {count=rs.getInt("count");}
-			//Àç·áÀÇ Àç°í ¼ö¸¦ ÆÄ¾Ç
+			//ì¬ë£Œì˜ ì¬ê³  ìˆ˜ë¥¼ íŒŒì•…
 			if(count-num<0) {
-				JOptionPane.showMessageDialog(null, "Àç°í°¡ ºÎÁ·ÇÕ´Ï´Ù.");
+				JOptionPane.showMessageDialog(null, "ì¬ê³ ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.");
 				return 0;
 			}
 			sql= "update stock set count="+ (count-num) + " where name=?";
@@ -197,7 +197,7 @@ public class PcDao{
 				 list.add(stock);
 			}
 
-            //Àç·áÀÇ Àç°í ¼ö¸¦ ÇÑ °³ ÁÙÀÓ
+            //ì¬ë£Œì˜ ì¬ê³  ìˆ˜ë¥¼ í•œ ê°œ ì¤„ì„
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -25,15 +25,15 @@ public class UserSeat  extends JFrame{
 	
 	int i;
 	public UserSeat(){
-		super("seat"); //Ã¢ ÀÌ¸§ Login
-		setLayout(null); //·¹ÀÌ¾Æ¿ô ³»°¡ ¿øÇÏ´Â À§Ä¡·Î
+		super("seat"); //ì°½ ì´ë¦„ Login
+		setLayout(null); //ë ˆì´ì•„ì›ƒ ë‚´ê°€ ì›í•˜ëŠ” ìœ„ì¹˜ë¡œ
 
 		
-		setSize(900,900);//ÀüÃ¼ Ã¢ Å©±â ¼³Á¤
-		setBounds(700, 40,900,900);// À§Ä¡, Å©±â ¼³Á¤
+		setSize(900,900);//ì „ì²´ ì°½ í¬ê¸° ì„¤ì •
+		setBounds(700, 40,900,900);// ìœ„ì¹˜, í¬ê¸° ì„¤ì •
 		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);//x´­·¶À» ¶§ Á¾·á
-		setResizable(false);//Ã¢ Å©±â °íÁ¤
+		setDefaultCloseOperation(EXIT_ON_CLOSE);//xëˆŒë €ì„ ë•Œ ì¢…ë£Œ
+		setResizable(false);//ì°½ í¬ê¸° ê³ ì •
 		
 		grid2 = new JPanel();
 		grid2.setLayout(new GridLayout(3,3,100,100));
@@ -47,7 +47,7 @@ public class UserSeat  extends JFrame{
 		b[5] = new JButton("6");
 		b[6] = new JButton("7");
 		b[7] = new JButton("8");
-		b[8] = new JButton("9");//¸Ş´º ¹öÆ° »ı¼º
+		b[8] = new JButton("9");//ë©”ë‰´ ë²„íŠ¼ ìƒì„±
 		//b[0].setFont(new Font("",Font.PLAIN,30));
 		
 		for(i=0;i<9;i++)
@@ -55,7 +55,7 @@ public class UserSeat  extends JFrame{
 		grid2.setBounds(95, 50, 700, 700);
 		add(grid2);
 
-		confirm = new JButton("È®ÀÎ");
+		confirm = new JButton("í™•ì¸");
 		confirm.setBounds(340,800,210,50);
 		add(confirm);
 	}

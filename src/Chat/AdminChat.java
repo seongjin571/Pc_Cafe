@@ -40,7 +40,7 @@ public class AdminChat extends JFrame implements ActionListener, WindowListener 
 	static String inputLine, outputLine;
 
 	public AdminChat() {
-		System.out.println("¼­¹ö ½ÃÀÛ!!");
+		System.out.println("ì„œë²„ ì‹œì‘!!");
 		try {
 			serverSocket = new ServerSocket(3000);
 			while(true) {
@@ -51,7 +51,7 @@ public class AdminChat extends JFrame implements ActionListener, WindowListener 
 				chatting.start();
 			}
 		} catch (IOException e) {
-			System.out.println("ÇØ´ç Æ÷Æ® ¹øÈ£¿¡ ¿¬°áÇÒ ¼ö ¾ø½À´Ï´Ù!");
+			System.out.println("í•´ë‹¹ í¬íŠ¸ ë²ˆí˜¸ì— ì—°ê²°í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤!");
 			System.exit(1);
 		}
 	}
@@ -60,17 +60,17 @@ public class AdminChat extends JFrame implements ActionListener, WindowListener 
 	public void chatStart() {
 		setSize(550, 600);
 		setLocation(100,180);
-		f1 = new Font("µ¸¿ò", Font.BOLD, 30);
+		f1 = new Font("ë‹ì›€", Font.BOLD, 30);
 		addWindowListener(this);
 		setTitle("SeJong Pc Cafe");
 		JPanel panel = new JPanel();
-		name = new JLabel("SeJong Pc Cafe °ü¸®ÀÚ Ã¤ÆÃ¹æ");
+		name = new JLabel("SeJong Pc Cafe ê´€ë¦¬ì ì±„íŒ…ë°©");
 		name.setFont(f1);
 		JPanel panel2 = new JPanel();
 		textArea = new JTextArea(25, 40);
 		textInput = new JTextField(20);
 		textInput.registerKeyboardAction(this, "input", KeyStroke.getKeyStroke(KeyEvent.VK_ENTER,0), JComponent.WHEN_FOCUSED);
-		but_input = new JButton("ÀÔ·Â");
+		but_input = new JButton("ì…ë ¥");
 		but_input.setActionCommand("input");
 		but_input.addActionListener(this);
 		panel2.add(name);
@@ -90,7 +90,7 @@ public class AdminChat extends JFrame implements ActionListener, WindowListener 
 		String in_str,return_str=null;
 		in_str=textInput.getText();
 		return_str=ck.check(in_str);
-		s = "°ü¸®ÀÚ : " + return_str;
+		s = "ê´€ë¦¬ì : " + return_str;
 		if (e.getActionCommand() == "input") {
 			textArea.append(s + " "+ nowTime()+"\n");
 			out.println(s);
@@ -99,7 +99,7 @@ public class AdminChat extends JFrame implements ActionListener, WindowListener 
 	} 
 
 	public String nowTime(){
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH½Ã mmºĞ ssÃÊ");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HHì‹œ mmë¶„ ssì´ˆ");
 		LocalDateTime time = LocalDateTime.now();
 		String nowTime = " ["+time.format(formatter)+"]";
 		return nowTime;
@@ -128,7 +128,7 @@ class Chatting extends Thread{
 		}
 //		chatStart();
 		chatStart();
-		textArea.append("Å¬¶óÀÌ¾ğÆ®°¡ Á¢¼ÓµÇ¾ú½À´Ï´Ù.\n");
+		textArea.append("í´ë¼ì´ì–¸íŠ¸ê°€ ì ‘ì†ë˜ì—ˆìŠµë‹ˆë‹¤.\n");
 
 		try {
 			String return_str;
@@ -194,6 +194,3 @@ class Chatting extends Thread{
 		
 	}
 }
-
-
-

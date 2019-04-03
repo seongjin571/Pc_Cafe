@@ -20,10 +20,10 @@ class string_checker{
 	
 	private static ArrayList<String> filter=new ArrayList<String>();
 	static {
-		filter.add("½Ã¹ß");
-		filter.add("¹ÌÄ£");
-		filter.add("¾¾¹ß");
-		filter.add("Áö¶ö");
+		filter.add("ì‹œë°œ");
+		filter.add("ì”¨ë°œ");
+		filter.add("ì§€ëž„");
+		filter.add("ë¯¸ì¹œ");
 		
 	}
 	public String check(String input) {
