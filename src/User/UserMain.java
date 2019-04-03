@@ -36,7 +36,7 @@ public class UserMain extends JFrame {
 		super("Login"); //창 이름 Login
 		setLayout(null); //레이아웃 내가 원하는 위치로
 
-//		picture();
+		picture();
 		
 		idpw();
 		
