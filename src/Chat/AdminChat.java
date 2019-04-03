@@ -46,6 +46,8 @@ public class AdminChat extends JFrame implements ActionListener, WindowListener 
 			while(true) {
 				 client = serverSocket.accept();
 				Chatting chatting = new Chatting(client);
+			    ServerThread st = new ServerThread(client);
+
 				chatting.start();
 			}
 		} catch (IOException e) {
