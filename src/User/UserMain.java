@@ -46,6 +46,9 @@ public class UserMain extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);//x눌렀을 때 종료
 		setResizable(false);//창 크기 고정
+		
+		UserSeat s1 = new UserSeat();
+		
 	}
 	
 	void picture() {
