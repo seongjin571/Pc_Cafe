@@ -30,13 +30,13 @@ public class UserSeat  extends JFrame{
 
 		
 		setSize(900,900);//전체 창 크기 설정
-		setBounds(300, 40,900,900);// 위치, 크기 설정
+		setBounds(700, 40,900,900);// 위치, 크기 설정
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);//x눌렀을 때 종료
 		setResizable(false);//창 크기 고정
 		
 		grid2 = new JPanel();
-		grid2.setLayout(new GridLayout(3,3,30,30));
+		grid2.setLayout(new GridLayout(3,3,100,100));
 
 		b = new JButton[10];
 		b[0] = new JButton("1");
@@ -48,6 +48,7 @@ public class UserSeat  extends JFrame{
 		b[6] = new JButton("7");
 		b[7] = new JButton("8");
 		b[8] = new JButton("9");//메뉴 버튼 생성
+		//b[0].setFont(new Font("",Font.PLAIN,30));
 		
 		for(i=0;i<9;i++)
 			grid2.add(b[i]);
