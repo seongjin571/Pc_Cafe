@@ -46,7 +46,7 @@ public class AdminChat extends JFrame implements ActionListener, WindowListener 
 			while(true) {
 				 client = serverSocket.accept();
 				Chatting chatting = new Chatting(client);
-			    ServerThread st = new ServerThread(client);
+//			    ServerThread chatting = new ServerThread(client);
 
 				chatting.start();
 			}
@@ -85,12 +85,12 @@ public class AdminChat extends JFrame implements ActionListener, WindowListener 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		string_checker ck = new string_checker();
+//		string_checker ck = new string_checker();
 		String s;
 		String in_str,return_str=null;
 		in_str=textInput.getText();
-		return_str=ck.check(in_str);
-		s = "관리자 : " + return_str;
+//		return_str=ck.check(in_str);
+		s = "관리자 : " + in_str;
 		if (e.getActionCommand() == "input") {
 			textArea.append(s + " "+ nowTime()+"\n");
 			out.println(s);
@@ -105,6 +105,58 @@ public class AdminChat extends JFrame implements ActionListener, WindowListener 
 		return nowTime;
 		
 	}
+//	public class ServerThread extends Thread{
+//		 //멤버변수로 선언
+//		 private Socket socket;
+//		 private BufferedReader br = null;
+//		 private PrintWriter pw = null;
+////		 private String userIP = socket.getInetAddress().toString();
+//		 
+//		 ServerThread(Socket client){
+//		  this.socket = client;
+//		  System.out.println("asd");
+//		 }
+//		 //오버라이딩일 경우 throw 불가. 
+//		 public void run(){
+//		  try{
+//		   service();
+//		  }catch(IOException e){
+//		   System.out.println("**"+"님 접속 종료.");
+//		  }finally{
+//		   try {
+//		    closeAll();
+//		   } catch (IOException e) {
+//		    // TODO Auto-generated catch block
+//		    e.printStackTrace();
+//		   }
+//		  }
+//		 }
+//		 
+//		 private void service()throws IOException{
+//			 chatStart();
+//		  br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//		  pw = new PrintWriter(socket.getOutputStream(), true);
+//		  String str = null;
+//		  while(true){
+//		   str = br.readLine();
+//		   if(str == null){
+//		    System.out.println(userIP+"님이 연결을 종료했습니다.");
+//		    break;
+//		   }
+//		   System.out.println(userIP+"님: "+str);
+//		   pw.println(str);
+//		  }
+//		 }
+//		 public void closeAll()throws IOException{
+//		  if (pw != null)
+//		   pw.close();
+//		  if (br != null)
+//		   br.close();
+//		  if (socket != null)
+//		   socket.close();
+//		 }
+//		}
+	
 class Chatting extends Thread{
 	Socket client;
 	Chatting (Socket client){
@@ -126,16 +178,15 @@ class Chatting extends Thread{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		chatStart();
 		chatStart();
 		textArea.append("클라이언트가 접속되었습니다.\n");
 
 		try {
-			String return_str;
-			string_checker ck = new string_checker();//d
+			String return_str="";
+//			string_checker ck = new string_checker();//d
 			while ((inputLine = in.readLine()) != null) {
-				return_str=ck.check(inputLine);
-				String s = return_str + " " + nowTime() + "\n";
+//				return_str=ck.check(inputLine);
+				String s = inputLine + " " + nowTime() + "\n";
 				textArea.append(s);
 			}
 		} catch (IOException e) {
