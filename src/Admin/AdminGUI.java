@@ -32,7 +32,7 @@ public class AdminGUI extends JFrame implements ActionListener, WindowListener {
 	BufferedImage img;
 	JLabel la1, la2, label, la3, la4, la5;
 	JTextField text;
-	String str;
+	String str; 
 	int count = 0;
 	WindowEvent win = null;
 
