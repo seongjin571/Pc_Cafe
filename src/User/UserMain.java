@@ -31,6 +31,7 @@ public class UserMain extends JFrame {
 	KeyListener keyListener;
 	User_info u_inf = new User_info();
 	Image img = null;
+	UserSeat s1;
 	
 	public UserMain() {
 		super("Login"); //창 이름 Login
@@ -47,7 +48,7 @@ public class UserMain extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);//x눌렀을 때 종료
 		setResizable(false);//창 크기 고정
 		
-		UserSeat s1 = new UserSeat();
+		
 		
 	}
 	
@@ -116,17 +117,9 @@ public class UserMain extends JFrame {
 						status.setText("id를 확인해주십시오");
 					else if(n == 1) {
 						dispose();//login 창 삭제
+						s1 = new UserSeat();
+						s1.id=id.getText();
 						
-						UserMenu j3 = new UserMenu("Menu",id.getText());// 새 Menu 창 생성
-						j3.setVisible(true);
-						j3.setSize(882, 600);//크기 설정
-						j3.setLocation(500, 100);//생성될 위치 설정
-						j3.addWindowListener(new WindowAdapter() {//x누르면 새창만 종료되게
-							public void windowClosing(WindowEvent e) {
-								j3.setVisible(false);
-								j3.dispose();//Menu 창 종료
-							}
-						});
 					}
 				}
 			}

@@ -18,12 +18,16 @@ import javax.swing.border.*;
 import dao.*;
 import dto.*;
 
-public class UserSeat  extends JFrame{
+public class UserSeat  extends JFrame implements ActionListener{
 
 	JPanel grid2;
 	JButton b[], confirm;
+	User_info u_inf = new User_info();
+
 	
-	int i;
+	int i, number;
+	String id;
+	
 	public UserSeat(){
 		super("seat"); //창 이름 Login
 		setLayout(null); //레이아웃 내가 원하는 위치로
@@ -58,8 +62,39 @@ public class UserSeat  extends JFrame{
 		confirm = new JButton("확인");
 		confirm.setBounds(340,800,210,50);
 		add(confirm);
+		
+		b[0].addActionListener(this);
+		b[1].addActionListener(this);
+		b[2].addActionListener(this);
+		b[3].addActionListener(this);
+		b[4].addActionListener(this);
+		b[5].addActionListener(this);
+		b[6].addActionListener(this);
+		b[7].addActionListener(this);
+		b[8].addActionListener(this);
+		confirm.addActionListener(this);
 	}
 	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		 if(e.getSource()==confirm) {
+			 dispose();//seat 창 삭제
+			 u_inf.updateSeat(id, number);
+			 UserMenu j3 = new UserMenu("Menu",id);// 새 Menu 창 생성
+				j3.setVisible(true);
+				j3.setSize(882, 600);//크기 설정
+				j3.setLocation(500, 100);//생성될 위치 설정
+				j3.addWindowListener(new WindowAdapter() {//x누르면 새창만 종료되게
+					public void windowClosing(WindowEvent e) {
+						j3.setVisible(false);
+						j3.dispose();//Menu 창 종료
+					}
+				});
+		}
+		 else if(e.getSource()==b[0]||e.getSource()==b[1]||e.getSource()==b[2]||e.getSource()==b[3]||e.getSource()==b[4]||e.getSource()==b[5]||e.getSource()==b[6]||e.getSource()==b[7]||e.getSource()==b[8]) {
+				number=Integer.parseInt(e.getActionCommand());//1~9 좌석 넘버 저장
+		 }
+	}
 	public static void main(String[] args)  {
 		
 		UserSeat s1 = new UserSeat();
