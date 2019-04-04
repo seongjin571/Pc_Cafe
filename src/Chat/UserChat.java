@@ -40,6 +40,7 @@ public class UserChat extends JFrame implements ActionListener, Runnable, Window
 	String userName;
 	static PrintWriter out = null;
 	static BufferedReader in = null;
+	Socket socket = null;
 	GridBagLayout Gbag = new GridBagLayout();
 	GridBagConstraints gbc1;
 
@@ -105,13 +106,12 @@ public class UserChat extends JFrame implements ActionListener, Runnable, Window
 	public void run() {
 
 		// TODO Auto-generated method stub
-		Socket socket = null;
 		try {
 			socket = new Socket("localhost", 3000);
 			out = new PrintWriter(socket.getOutputStream(), true);
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			textArea.append("채팅을 시작합니다. 욕설은 삼가해주세요.\n");
-			out.print(userName + "님이 입장하셨습니다.\n");
+			out.println(userName + "님이 입장하셨습니다.");
 		} catch (UnknownHostException e) {
 			System.err.println("localhost에 접근할 수 없습니다.");
 //			System.exit(1);
@@ -123,9 +123,9 @@ public class UserChat extends JFrame implements ActionListener, Runnable, Window
 		try {
 			String return_str;
 			string_checker ck = new string_checker();// d
-			while ((fromServer = in.readLine()) != null) {
-//				return_str=ck.check(fromServer);
-				String s = fromServer + " " + nowTime() + "\n";
+			while (!(fromServer = in.readLine()).equals("k121313231")) {
+				return_str=ck.check(fromServer);
+				String s = return_str + " " + nowTime() + "\n";
 				textArea.append(s);
 			}
 		} catch (IOException e) {
@@ -147,6 +147,14 @@ public class UserChat extends JFrame implements ActionListener, Runnable, Window
 		}
 
 	}
+	public void closeAll() throws IOException {
+		if (out != null)
+			out.close();
+		if (in != null)
+			in.close();
+		if (socket != null)
+			socket.close();
+	}
 
 	@Override
 	public void windowActivated(WindowEvent arg0) {
@@ -164,7 +172,9 @@ public class UserChat extends JFrame implements ActionListener, Runnable, Window
 	@Override
 	public void windowClosing(WindowEvent arg0) {
 		// TODO Auto-generated method stub
-
+		out.println("<<"+userName+"님이 채팅방에 나가셨습니다>>");
+		out.println("k121313231");
+		
 	}
 
 	@Override
