@@ -44,7 +44,7 @@ class ServerThread extends JFrame implements Runnable, ActionListener, WindowLis
 
 	// 오버라이딩일 경우 throw 불가.
 	public void run() {
-		setSize(550, 600);
+		setSize(550, 620);
 		setLocation(100, 180);
 		f1 = new Font("돋움", Font.BOLD, 30);
 		addWindowListener(this);
@@ -53,8 +53,8 @@ class ServerThread extends JFrame implements Runnable, ActionListener, WindowLis
 		name = new JLabel("SeJong Pc Cafe 관리자 채팅방");
 		name.setFont(f1);
 		JPanel panel2 = new JPanel();
-		textArea = new JTextArea(25, 40);
-		textInput = new JTextField(20);
+		textArea = new JTextArea(30, 40);
+		textInput = new JTextField(30);
 		textInput.registerKeyboardAction(this, "input", KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
 				JComponent.WHEN_FOCUSED);
 		but_input = new JButton("입력");
@@ -83,6 +83,7 @@ class ServerThread extends JFrame implements Runnable, ActionListener, WindowLis
 
 	private void service() throws IOException {
 //	 chatStart();
+		textArea.append("클라이언트가 접속되었습니다.\n");
 		in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		out = new PrintWriter(socket.getOutputStream(), true);
 		String str = null;
