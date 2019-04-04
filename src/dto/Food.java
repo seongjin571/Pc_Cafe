@@ -18,6 +18,10 @@ public class Food {
    public String getIngredients() {
 	      return ingredients;
    }
+
+   public boolean getSize() {
+	   return size;
+   }
    
    public void setName(String name) {
       this.name = name;
