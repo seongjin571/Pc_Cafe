@@ -93,8 +93,8 @@ class ServerThread extends JFrame implements Runnable, ActionListener, WindowLis
 				System.out.println( "님이 연결을 종료했습니다.");
 				break;
 			}
-			System.out.println( "님: " + str);
-			out.println(str);
+			textArea.append(str + " " + nowTime() + "\n");
+			
 		}
 	}
 
