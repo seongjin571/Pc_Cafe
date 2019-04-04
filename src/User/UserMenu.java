@@ -178,6 +178,7 @@ public class UserMenu extends JFrame implements ActionListener, ItemListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		if(e.getActionCommand() == "chat") {
 			UserChat clientChat = new UserChat(userName);
 			new Thread(clientChat).start();

@@ -1,15 +1,17 @@
 package dao;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
+import dto.Food;
+import dto.Order;
 import dto.User;
 import Admin.*;
-
 
 public class User_info {
 	
@@ -22,6 +24,11 @@ public class User_info {
 	 Connection conn = null;
 	 PreparedStatement ps = null;
 	 ResultSet rs = null;
+	 
+	 PcDao PcDao=null;
+	 Order order=null;
+	 Food food=null;
+	 
 	 
 	public int compareID(String id) {
 		 
@@ -272,8 +279,31 @@ public class User_info {
 	 }
 
 	public int updateOrder(String name, int price, String shot, String size, String tem) {
+		
 		int result = 0;
+		
 		 try {
+			 	PcDao=new PcDao();
+				order=PcDao.getOrder();
+				food=PcDao.getFood(name);
+				System.out.println(food);
+				
+				String[] ingredient=food.getIngredients().split(",");//주문된 음식의 재료를 나눠서 String에 저장
+				int[] count=new int[ingredient.length];
+				
+				for(int i=0;i<count.length;i++) count[i]=1;
+				
+				if(food.getSize()==true) {
+					if(shot.equals("y")) count[0]++;
+					if(size.equals("tall")||size.equals("large")) for(int i=0;i<count.length;i++) count[i]++;
+					if(size.equals("large")) for(int i=0;i<count.length;i++)count[i]++;
+				}
+				
+				for(int i=0;i<ingredient.length;i++) {//재고 수가 1개 이거나 2개 이므로 배열에 길이에 맞춰 반복
+					int check=PcDao.useStock(ingredient[i],count[i]);//재고 수를 한 개씩 줄여줌
+					if(check==0) throw new Exception();
+				}
+				
 			 Class.forName("com.mysql.cj.jdbc.Driver");
 				conn = DriverManager.getConnection(dburl, dbUser, dbpwd);
 				String sql = "insert into ordertable value(?,?,?,?,?)";
@@ -284,12 +314,10 @@ public class User_info {
 				ps.setString(4, size);
 				ps.setString(5, tem);
 				result = ps.executeUpdate();
-//				AdminMain(); //요기요
+				
 			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
+			
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
