@@ -83,7 +83,6 @@ public class UserSeat  extends JFrame implements ActionListener{
 			 try {
 					if(result==-1) throw new Exception();
 					u_inf.updateSeat(id, num);
-					dispose();//seat 창 삭제
 					UserMenu j3 = new UserMenu("Menu",id);// 새 Menu 창 생성
 					j3.setVisible(true);
 					j3.setSize(882, 600);//크기 설정

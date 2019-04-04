@@ -326,8 +326,6 @@ public class UserMenu extends JFrame implements ActionListener, ItemListener{
 		}
 		else if(e.getSource()==logout) {
 			UserMain umain = new UserMain();
-			//user_info 이용해서 user_inf테이블에 로그아웃한 회원 num값 null로 만들기!
-			//user_info 이용해서 user_inf테이블에 로그아웃한 회원 exist값 no로 만들기!
 			dispose();
 		}		
 		else if(e.getSource()==b[0]) {
