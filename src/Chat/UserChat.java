@@ -95,7 +95,8 @@ public class UserChat extends JFrame implements ActionListener,Runnable,WindowLi
 	}
 
 	@Override
-	public void run() {
+	public void run(){
+
 		// TODO Auto-generated method stub
 		Socket socket = null;
 		try {
