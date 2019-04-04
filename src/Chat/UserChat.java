@@ -61,8 +61,8 @@ public class UserChat extends JFrame implements ActionListener, Runnable, Window
 		JScrollPane scroll = new JScrollPane(textArea);
 		textInput = new JTextField(30);
 		textInput.setFont(f2);
-		textInput.registerKeyboardAction(this, "input", KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
-				JComponent.WHEN_FOCUSED);
+		textInput.registerKeyboardAction(
+				this, "input", KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),JComponent.WHEN_FOCUSED);
 		but_input = new JButton("입력");
 		but_input.setActionCommand("input");
 		but_input.addActionListener(this);
@@ -86,12 +86,12 @@ public class UserChat extends JFrame implements ActionListener, Runnable, Window
 			String in_str, return_str = null;
 			in_str = textInput.getText();
 			return_str = ck.check(in_str);
-
 			String s = userName + ": " + return_str;
 			textArea.append(s + " " + nowTime() + "\n");
 			out.println(s);
 			textInput.setText("");
 		}
+		
 	}
 
 	public String nowTime() {
@@ -114,7 +114,6 @@ public class UserChat extends JFrame implements ActionListener, Runnable, Window
 			out.println(userName + "님이 입장하셨습니다.");
 		} catch (UnknownHostException e) {
 			System.err.println("localhost에 접근할 수 없습니다.");
-//			System.exit(1);
 		} catch (IOException eg) {
 			eg.printStackTrace();
 			textArea.append("연결에 실패하였습니다. 관리자에게 문의하세요.");
@@ -146,14 +145,6 @@ public class UserChat extends JFrame implements ActionListener, Runnable, Window
 			e.printStackTrace();
 		}
 
-	}
-	public void closeAll() throws IOException {
-		if (out != null)
-			out.close();
-		if (in != null)
-			in.close();
-		if (socket != null)
-			socket.close();
 	}
 
 	@Override

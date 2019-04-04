@@ -62,6 +62,7 @@ public class AdminChat extends JFrame implements WindowListener {
 			}
 			System.out.println("**서버 종료**");
 		}
+		
 	}
 
 	@Override
