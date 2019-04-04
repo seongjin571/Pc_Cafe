@@ -1,6 +1,7 @@
 package Chat;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,7 +40,7 @@ public class UserChat extends JFrame implements ActionListener,Runnable,WindowLi
 
 	public UserChat(String userName) {
 		this.userName = userName;
-		setSize(550, 600);
+		setSize(550, 620);
 		setLocation(1000,180);
 		f1 = new Font("돋움", Font.BOLD, 30);
 		addWindowListener(this);
@@ -48,8 +49,8 @@ public class UserChat extends JFrame implements ActionListener,Runnable,WindowLi
 		name = new JLabel("SeJong Pc Cafe 채팅방");
 		name.setFont(f1);
 		panel2 = new JPanel();
-		textArea = new JTextArea(25, 40);
-		textInput = new JTextField(20);
+		textArea = new JTextArea(30, 40);
+		textInput = new JTextField(30);
 		textInput.registerKeyboardAction(this, "input", KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
 				JComponent.WHEN_FOCUSED);
 		but_input = new JButton("입력");
@@ -59,6 +60,10 @@ public class UserChat extends JFrame implements ActionListener,Runnable,WindowLi
 		panel.add(textArea);
 		panel.add(textInput);
 		panel.add(but_input);
+		panel2.setBackground(new Color(255, 80, 80, 255));
+		panel.setBackground(new Color(255, 80, 80, 255));
+
+		
 		add(panel2, BorderLayout.NORTH);
 		add(panel);
 		setVisible(true);
