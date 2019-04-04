@@ -26,7 +26,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 
-public class AdminChat extends JFrame implements  WindowListener {
+public class AdminChat extends JFrame implements WindowListener {
 	private static final long serialVersionUID = 1L;
 	JButton but_input;
 	JTextArea textArea;
@@ -44,9 +44,9 @@ public class AdminChat extends JFrame implements  WindowListener {
 		try {
 			serverSocket = new ServerSocket(3000);
 			while (true) {
-				client = serverSocket.accept();				
-			    Runnable chatting = new ServerThread(client);
-			    Thread t = new Thread(chatting);
+				client = serverSocket.accept();
+				Runnable chatting = new ServerThread(client);
+				Thread t = new Thread(chatting);
 
 				t.start();
 			}
@@ -54,16 +54,15 @@ public class AdminChat extends JFrame implements  WindowListener {
 			System.out.println("해당 포트 번호에 연결할 수 없습니다!");
 		} finally {
 			if (client != null) {
-					client.close();
-				} 
-			
+				client.close();
+			}
+
 			if (serverSocket != null) {
-					serverSocket.close();
+				serverSocket.close();
 			}
 			System.out.println("**서버 종료**");
 		}
 	}
-
 
 	@Override
 	public void windowActivated(WindowEvent arg0) {
@@ -107,5 +106,3 @@ public class AdminChat extends JFrame implements  WindowListener {
 
 	}
 }
-
-
