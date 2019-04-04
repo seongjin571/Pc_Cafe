@@ -34,7 +34,7 @@ public class UserSeat  extends JFrame implements ActionListener{
 
 		
 		setSize(900,900);//전체 창 크기 설정
-		setBounds(700, 40,900,900);// 위치, 크기 설정
+		setBounds(510, 40,900,900);// 위치, 크기 설정
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);//x눌렀을 때 종료
 		setResizable(false);//창 크기 고정
