@@ -93,8 +93,8 @@ class ServerThread extends JFrame implements Runnable, ActionListener, WindowLis
 		String str = null;
 		while (true) {
 			str = in.readLine();
-			if (str == null) {
-				System.out.println("님이 연결을 종료했습니다.");
+			if (str.equals("k121313231")) {
+				closeAll();
 				break;
 			}
 			textArea.append(str + " " + nowTime() + "\n");
@@ -150,7 +150,8 @@ class ServerThread extends JFrame implements Runnable, ActionListener, WindowLis
 	@Override
 	public void windowClosing(WindowEvent e) {
 		// TODO Auto-generated method stub
-
+		out.println("<<관리자가 채팅방에 나가셨습니다>>");
+		out.println("k121313231");
 	}
 
 	@Override
