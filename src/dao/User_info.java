@@ -443,4 +443,57 @@ public class User_info {
 		}
 		 return result;
 	 }
+	
+	
+	public int logout(String id) {
+		int result = 0;
+		 try {
+			String blank="";
+			
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection(dburl, dbUser, dbpwd);
+			String sql = "update seat set exist_id = ? where exist_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1,blank);
+			ps.setString(2, id);
+			
+			result = ps.executeUpdate();
+			
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			if(ps!=null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			if(conn!=null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		 return result;
+	 }	
 }
