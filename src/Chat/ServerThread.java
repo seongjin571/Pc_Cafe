@@ -37,13 +37,11 @@ class ServerThread extends JFrame implements Runnable, ActionListener, WindowLis
 	private Socket socket;
 	private BufferedReader in = null;
 	private PrintWriter out = null;
-//	private String userIP = socket.getInetAddress().toString();F
 
 	ServerThread(Socket client) {
 		this.socket = client;
 	}
 
-	// 오버라이딩일 경우 throw 불가.
 	public void run() {
 		setSize(550, 620);
 		setLocation(100, 180);
@@ -60,8 +58,8 @@ class ServerThread extends JFrame implements Runnable, ActionListener, WindowLis
 		JScrollPane scroll = new JScrollPane(textArea);
 		textInput = new JTextField(30);
 		textInput.setFont(f2);
-		textInput.registerKeyboardAction(this, "input", KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
-				JComponent.WHEN_FOCUSED);
+		textInput.registerKeyboardAction(
+				this, "input", KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),JComponent.WHEN_FOCUSED);
 		but_input = new JButton("입력");
 		but_input.setActionCommand("input");
 		but_input.addActionListener(this);
@@ -84,10 +82,10 @@ class ServerThread extends JFrame implements Runnable, ActionListener, WindowLis
 				e.printStackTrace();
 			}
 		}
+		
 	}
 
 	private void service() throws IOException {
-//	 chatStart();
 		in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		out = new PrintWriter(socket.getOutputStream(), true);
 		String str = null;
@@ -98,8 +96,8 @@ class ServerThread extends JFrame implements Runnable, ActionListener, WindowLis
 				break;
 			}
 			textArea.append(str + " " + nowTime() + "\n");
-
 		}
+		
 	}
 
 	public void closeAll() throws IOException {
@@ -113,7 +111,6 @@ class ServerThread extends JFrame implements Runnable, ActionListener, WindowLis
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		string_checker ck = new string_checker();
 		String s;
 		String in_str, return_str = null;
@@ -125,6 +122,7 @@ class ServerThread extends JFrame implements Runnable, ActionListener, WindowLis
 			out.println(s);
 			textInput.setText("");
 		}
+		
 	}
 
 	public String nowTime() {
