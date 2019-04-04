@@ -31,7 +31,7 @@ public class UserJoin extends JFrame   {
 
 	UserJoin(String str){
 		super(str);
-		setLayout(null); //·¹ÀÌ¾Æ¿ô ³»°¡ ¿øÇÏ´Â À§Ä¡·Î
+		setLayout(null); //ë ˆì´ì•„ì›ƒ ë‚´ê°€ ì›í•˜ëŠ” ìœ„ì¹˜ë¡œ
 
 		J_idpw();
 		J_button();
@@ -48,52 +48,52 @@ public class UserJoin extends JFrame   {
 		la1.setFont(new Font("",Font.BOLD, 20));
 		la2 = new JLabel("PW");
 		la2.setFont(new Font("",Font.BOLD, 20));
-		la3 = new JLabel("PW È®ÀÎ");
+		la3 = new JLabel("PW í™•ì¸");
 		la3.setFont(new Font("",Font.BOLD,20));
 		la4 = new JLabel("E-mail");
-		la4.setFont(new Font("",Font.BOLD, 20));//ID, PW µî ±ÛÀÚ ¼³Á¤
+		la4.setFont(new Font("",Font.BOLD, 20));//ID, PW ë“± ê¸€ì ì„¤ì •
 		
 		
 		id = new JTextField(13);
 		id.setFont(new Font("",Font.BOLD, 20));
-		pw = new JPasswordField(13);//ÀÔ·Â½Ã ¡Ü·Î ÀÔ·ÂµÊ
+		pw = new JPasswordField(13);//ì…ë ¥ì‹œ â—ë¡œ ì…ë ¥ë¨
 		pw.setFont(new Font("",Font.BOLD, 20));
-		pw2 = new JPasswordField(13);//ÀÔ·Â½Ã ¡Ü·Î ÀÔ·ÂµÊ
+		pw2 = new JPasswordField(13);//ì…ë ¥ì‹œ â—ë¡œ ì…ë ¥ë¨
 		pw2.setFont(new Font("",Font.BOLD, 20));
 		email = new JTextField(13);
-		email.setFont(new Font("",Font.BOLD, 20));//id, pw µî ÀÔ·Â Ã¢ ±ÛÀÚ ¼³Á¤
+		email.setFont(new Font("",Font.BOLD, 20));//id, pw ë“± ì…ë ¥ ì°½ ê¸€ì ì„¤ì •
 		
 		
 		idPanel.add(la1);
 		idPanel.add(id);
 		idPanel.setBounds(96, 140, 300, 60);
-		add(idPanel);// ID±ÛÀÚ¿Í ¹Ú½º »ğÀÔ
+		add(idPanel);// IDê¸€ìì™€ ë°•ìŠ¤ ì‚½ì…
 
 		paPanel.add(la2);
 		paPanel.add(pw);
 		paPanel.setBounds(91, 220, 300, 60);
-		add(paPanel);// PW±ÛÀÚ¿Í ¹Ú½º »ğÀÔ
+		add(paPanel);// PWê¸€ìì™€ ë°•ìŠ¤ ì‚½ì…
 
 		pa2Panel.add(la3);
 		pa2Panel.add(pw2);
 		pa2Panel.setBounds(42, 300, 350, 60);
-		add(pa2Panel);// pw2±ÛÀÚ¿Í ¹Ú½º »ğÀÔ
+		add(pa2Panel);// pw2ê¸€ìì™€ ë°•ìŠ¤ ì‚½ì…
 		
 		emPanel.add(la4);
 		emPanel.add(email);
 		emPanel.setBounds(80, 380, 300, 60);
-		add(emPanel);// email±ÛÀÚ¿Í ¹Ú½º »ğÀÔ
+		add(emPanel);// emailê¸€ìì™€ ë°•ìŠ¤ ì‚½ì…
 	}
 	
 	void J_button() {
 		
-		b1 = new JButton("Áßº¹");
-		b2 = new JButton("JOIN");//Áßº¹, JOIN ¹öÆ° »ı¼º
+		b1 = new JButton("ì¤‘ë³µ");
+		b2 = new JButton("JOIN");//ì¤‘ë³µ, JOIN ë²„íŠ¼ ìƒì„±
 		
-		b1.setBounds(400,143,100,33);//À§Ä¡, Å©±â ¼³Á¤
-		b1.setBackground(new Color(210,50,50));//»ö»ó »¡°£»ö
-		b1.setFont(new Font("",Font.PLAIN,17));//±Û¾¾Ã¼ ¼³Á¤
-		b1.setForeground(new Color(255,255,255));//±Û¾¾ ÇÏ¾á»ö
+		b1.setBounds(400,143,100,33);//ìœ„ì¹˜, í¬ê¸° ì„¤ì •
+		b1.setBackground(new Color(210,50,50));//ìƒ‰ìƒ ë¹¨ê°„ìƒ‰
+		b1.setFont(new Font("",Font.PLAIN,17));//ê¸€ì”¨ì²´ ì„¤ì •
+		b1.setForeground(new Color(255,255,255));//ê¸€ì”¨ í•˜ì–€ìƒ‰
 		
 		b2.setBounds(210,480,120,40);
 		b2.setBackground(new Color(210,50,50));
@@ -101,34 +101,34 @@ public class UserJoin extends JFrame   {
 		b2.setForeground(new Color(255,255,255));
 		
 		add(b1);
-		add(b2);//Áßº¹, JOIN ¹öÆ° ¼³Á¤ ÈÄ »ğÀÔ
+		add(b2);//ì¤‘ë³µ, JOIN ë²„íŠ¼ ì„¤ì • í›„ ì‚½ì…
 		
 		status = new JLabel();
-		b2.addActionListener(new ActionListener() {//JOIN¹öÆ° Å¬¸¯½Ã ¹ß»ıÇÏ´Â ¾×¼Ç
+		b2.addActionListener(new ActionListener() {//JOINë²„íŠ¼ í´ë¦­ì‹œ ë°œìƒí•˜ëŠ” ì•¡ì…˜
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				if(id.getText().equals("")) {//id ÀÔ·Â ¾ÈµÈ °æ¿ì
-					status.setText("id¸¦ ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À.");
+				if(id.getText().equals("")) {//id ì…ë ¥ ì•ˆëœ ê²½ìš°
+					status.setText("idë¥¼ ì…ë ¥í•´ ì£¼ì‹­ì‹œì˜¤.");
 				}
-				else if(flag==0||(!id.getText().equals(ID))) {//id Áßº¹ È®ÀÎ ¾ÈÇÑ °æ¿ì
-					status.setText("id Áßº¹À» È®ÀÎÇØ ÁÖ½Ê½Ã¿À.");
+				else if(flag==0||(!id.getText().equals(ID))) {//id ì¤‘ë³µ í™•ì¸ ì•ˆí•œ ê²½ìš°
+					status.setText("id ì¤‘ë³µì„ í™•ì¸í•´ ì£¼ì‹­ì‹œì˜¤.");
 				}
-				else if(pw.getText().equals("")) {//pw ÀÔ·Â ¾ÈµÈ °æ¿ì
-					status.setText("pw¸¦ ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À.");
+				else if(pw.getText().equals("")) {//pw ì…ë ¥ ì•ˆëœ ê²½ìš°
+					status.setText("pwë¥¼ ì…ë ¥í•´ ì£¼ì‹­ì‹œì˜¤.");
 				}
-				else if(pw2.getText().equals("")) {//pw ÀÔ·Â ¾ÈµÈ °æ¿ì
-					status.setText("pw¸¦ È®ÀÎÇØ ÁÖ½Ê½Ã¿À.");
+				else if(pw2.getText().equals("")) {//pw ì…ë ¥ ì•ˆëœ ê²½ìš°
+					status.setText("pwë¥¼ í™•ì¸í•´ ì£¼ì‹­ì‹œì˜¤.");
 				}
-				else if(email.getText().equals("")) {//ÀÌ¸ŞÀÏÀÌ ÀÔ·Â ¾ÈµÈ °æ¿ì
-					status.setText("ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À.");
+				else if(email.getText().equals("")) {//ì´ë©”ì¼ì´ ì…ë ¥ ì•ˆëœ ê²½ìš°
+					status.setText("ì´ë©”ì¼ì„ ì…ë ¥í•´ ì£¼ì‹­ì‹œì˜¤.");
 				}
 				
-				else if(!(pw.getText().equals(pw2.getText()))) {//pwÀÇ °ª°ú pw2ÀÇ °ªÀÌ °°Áö ¾ÊÀ¸¸é
-					status.setText("ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
+				else if(!(pw.getText().equals(pw2.getText()))) {//pwì˜ ê°’ê³¼ pw2ì˜ ê°’ì´ ê°™ì§€ ì•Šìœ¼ë©´
+					status.setText("ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 				}
-				else{//À§ÀÇ ¸ğµç °æ¿ì¸¦ ¸¸Á·ÇÏ´Â °æ¿ì¿¡´Â ¿À·ù ¸Ş½ÃÁö Ãâ·Â ¾øÀ½
+				else{//ìœ„ì˜ ëª¨ë“  ê²½ìš°ë¥¼ ë§Œì¡±í•˜ëŠ” ê²½ìš°ì—ëŠ” ì˜¤ë¥˜ ë©”ì‹œì§€ ì¶œë ¥ ì—†ìŒ
 					status.setText("");
 					User u = new User(id.getText(), pw.getText(), email.getText(), 0);
 					u_inf.addMember(u);
@@ -139,26 +139,26 @@ public class UserJoin extends JFrame   {
 		
 	
 		
-		b1.addActionListener(new ActionListener() {//Áßº¹¹öÆ° Å¬¸¯½Ã ¹ß»ıÇÏ´Â ¾×¼Ç
+		b1.addActionListener(new ActionListener() {//ì¤‘ë³µë²„íŠ¼ í´ë¦­ì‹œ ë°œìƒí•˜ëŠ” ì•¡ì…˜
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				flag=1;//Áßº¹ È®ÀÎ Çß´Ù´Â ÀÇ¹Ì
-				ID=id.getText();//Áßº¹ È®ÀÎÇÑ ¾ÆÀÌµğ ÀúÀå
+				flag=1;//ì¤‘ë³µ í™•ì¸ í–ˆë‹¤ëŠ” ì˜ë¯¸
+				ID=id.getText();//ì¤‘ë³µ í™•ì¸í•œ ì•„ì´ë”” ì €ì¥
 				
 				int n = u_inf.compareID(id.getText());
 				if(n == -1)
-					status.setText("ÀÌ¹Ì Á¸ÀçÇÏ´Â IDÀÔ´Ï´Ù.");
+					status.setText("ì´ë¯¸ ì¡´ì¬í•˜ëŠ” IDì…ë‹ˆë‹¤.");
 				else
-					status.setText("»ç¿ë °¡´ÉÇÑ IDÀÔ´Ï´Ù.");
+					status.setText("ì‚¬ìš© ê°€ëŠ¥í•œ IDì…ë‹ˆë‹¤.");
 		
 			}
 		});
 		
 		status.setFont(new Font("",Font.PLAIN,15));
-		status.setHorizontalAlignment(JTextField.CENTER);//°¡¿îµ¥Á¤·Ä
+		status.setHorizontalAlignment(JTextField.CENTER);//ê°€ìš´ë°ì •ë ¬
 		status.setBounds(153,520,240,40);
-		add(status);// id+pw ÀÎ status ¼³Á¤ ÈÄ »ğÀÔ
+		add(status);// id+pw ì¸ status ì„¤ì • í›„ ì‚½ì…
 		
 		
 	}

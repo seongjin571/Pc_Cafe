@@ -23,6 +23,7 @@ import dto.*;
 public class AdminGUI extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
+
 	JPanel contentPane, grid;
 	JButton btn1, btn2,btn3;
 	JLabel la1, la2, la3;
