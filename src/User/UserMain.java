@@ -76,6 +76,7 @@ public class UserMain extends JFrame {
 		la2 = new JLabel("PW ");
 		la2.setFont(new Font("",Font.BOLD, 26));//ID, PW 글자 설정
 
+		
 		id = new JTextField(13);
 		id.setFont(new Font("",Font.BOLD, 20));
 		pw = new JPasswordField(13);//입력시 ●로 입력됨
