@@ -93,14 +93,11 @@ public class UserSeat  extends JFrame implements ActionListener{
 		 if(e.getSource()==confirm) {
 			 boolean exist =false;
 			 int result = u_inf.confirmSeat(num);
-			 
-<<<<<<< HEAD
-			 try {				 	
-=======
-			 try {
->>>>>>> c7633f3c5063b69e0ff1998f03378bd3fc5d8718
+			 	 try {				 	
+			 		String temp=id;
+			 		System.out.print(temp+ id);
 					if(result==-1) throw new Exception();
-					u_inf.logout(id);
+				//	u_inf.logout(temp);
 					u_inf.updateSeat(id, num);
 					UserMenu j3 = new UserMenu("Menu",id);// 새 Menu 창 생성
 					j3.setVisible(true);
