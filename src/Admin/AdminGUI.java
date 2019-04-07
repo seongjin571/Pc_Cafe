@@ -28,6 +28,7 @@ public class AdminGUI extends JFrame implements ActionListener{
 	JButton btn1, btn2,btn3;
 	JLabel la1, la2, la3;
 	
+	
 	public void managerWindow() {
 
 		setTitle("관리자창");

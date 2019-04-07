@@ -140,14 +140,14 @@ public class User_info {
 				String u_pw = rs.getString("u_pw");
 				if(u_id.equals(id)) {
 					if(u_pw.equals(pw)) {
-						result = 1;// id, pw 둘다 일치
+						result = 1;// id, pw �몮�떎 �씪移�
 					}
 					else
-						result = 2;// id만 일치
+						result = 2;// id留� �씪移�
 				}
 			}
 			else {
-				result = 3;// id, pw 둘다 불일치
+				result = 3;// id, pw �몮�떎 遺덉씪移�
 			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -287,7 +287,7 @@ public class User_info {
 				food=PcDao.getFood(name);
 				System.out.println(food);
 				
-				String[] ingredient=food.getIngredients().split(",");//�ֹ��� ����� ��Ḧ ������ String�� ����
+				String[] ingredient=food.getIngredients().split(",");//占쌍뱄옙占쏙옙 占쏙옙占쏙옙占� 占쏙옙搔� 占쏙옙占쏙옙占쏙옙 String占쏙옙 占쏙옙占쏙옙
 				int[] count=new int[ingredient.length];
 				
 				for(int i=0;i<count.length;i++) count[i]=1;
@@ -298,8 +298,8 @@ public class User_info {
 					if(size.equals("large")) for(int i=0;i<count.length;i++)count[i]++;
 				}
 				
-				for(int i=0;i<ingredient.length;i++) {//��� �� 1�� �̰ų� 2�� �̹Ƿ� �迭�� ���̿� ���� �ݺ�
-					int check=PcDao.useStock(ingredient[i],count[i]);//��� �� �� ���� �ٿ���
+				for(int i=0;i<ingredient.length;i++) {//占쏙옙占� 占쏙옙 1占쏙옙 占싱거놂옙 2占쏙옙 占싱므뤄옙 占썼열占쏙옙 占쏙옙占싱울옙 占쏙옙占쏙옙 占쌥븝옙
+					int check=PcDao.useStock(ingredient[i],count[i]);//占쏙옙占� 占쏙옙 占쏙옙 占쏙옙占쏙옙 占쌕울옙占쏙옙
 					if(check==0) throw new Exception();
 				}
 				
@@ -362,7 +362,7 @@ public class User_info {
 				if(exist_id.equals(""))
 					result = 0;
 				else 
-					result = -1;// 이미 누가 앉은 자리
+					result = -1;// �씠誘� �늻媛� �븠�� �옄由�
 			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
