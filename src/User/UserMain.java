@@ -118,8 +118,8 @@ public class UserMain extends JFrame {
 						status.setText("id를 확인해주십시오");
 					else if(n == 1) {
 						dispose();//login 창 삭제
-						s1 = new UserSeat();
-						s1.id=id.getText();
+					
+						s1 = new UserSeat(id.getText());
 						
 					}
 				}

@@ -421,7 +421,7 @@ public class UserMenu extends JFrame implements ActionListener, ItemListener{
 		}
 		if(e.getSource()==change) {
 			dispose();
-			new UserSeat();
+			new UserSeat(userName);
 		}
 	}
 	
