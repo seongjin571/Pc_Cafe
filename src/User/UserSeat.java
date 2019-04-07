@@ -28,9 +28,10 @@ public class UserSeat  extends JFrame implements ActionListener{
 	int i, num;
 	String id;
 
-	public UserSeat(){
-	
-		super("seat"); //창 이름 Login
+	public UserSeat(String id){
+		super("seat");	 //창 이름 Login
+		
+		this.id=id;
 		setLayout(null); //레이아웃 내가 원하는 위치로
 
 	
@@ -93,8 +94,8 @@ public class UserSeat  extends JFrame implements ActionListener{
 		 if(e.getSource()==confirm) {
 			 boolean exist =false;
 			 int result = u_inf.confirmSeat(num);
-			 
-			 try {
+			 	 try {				 	
+			 	
 					if(result==-1) throw new Exception();
 					u_inf.logout(id);
 					u_inf.updateSeat(id, num);
@@ -123,7 +124,7 @@ public class UserSeat  extends JFrame implements ActionListener{
 	}
 	public static void main(String[] args)  {
 		
-		UserSeat s1 = new UserSeat();
+		//UserSeat s1 = new UserSeat();
 		
 	}
 	
