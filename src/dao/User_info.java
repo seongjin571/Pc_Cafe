@@ -502,7 +502,6 @@ public class User_info {
 	
 	@SuppressWarnings("finally")
 	public ArrayList<Seat> seatload() {
-		int result = 0;
 		Seat in=null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
