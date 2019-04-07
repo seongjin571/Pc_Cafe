@@ -37,15 +37,15 @@ public class UserChat extends JFrame implements ActionListener, Runnable, Window
 	JLabel name;
 	JPanel panel, panel2;
 	Font f1, f2;
-	String userName;
+	int seatNum;
 	static PrintWriter out = null;
 	static BufferedReader in = null;
 	Socket socket = null;
 	GridBagLayout Gbag = new GridBagLayout();
 	GridBagConstraints gbc1;
 
-	public UserChat(String userName) {
-		this.userName = userName;
+	public UserChat(int seatNum) {
+		this.seatNum = seatNum;
 		setSize(550, 620);
 		setLocation(1000, 180);
 		f1 = new Font("돋움", Font.BOLD, 30);
@@ -86,7 +86,7 @@ public class UserChat extends JFrame implements ActionListener, Runnable, Window
 			String in_str, return_str = null;
 			in_str = textInput.getText();
 			return_str = ck.check(in_str);
-			String s = userName + ": " + return_str;
+			String s = seatNum + "번 손님: " + return_str;
 			textArea.append(s + " " + nowTime() + "\n");
 			out.println(s);
 			textInput.setText("");
@@ -111,7 +111,7 @@ public class UserChat extends JFrame implements ActionListener, Runnable, Window
 			out = new PrintWriter(socket.getOutputStream(), true);
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			textArea.append("채팅을 시작합니다. 욕설은 삼가해주세요.\n");
-			out.println(userName + "님이 입장하셨습니다.");
+			out.println(seatNum + "번 손님이 입장하셨습니다.");
 		} catch (UnknownHostException e) {
 			System.err.println("localhost에 접근할 수 없습니다.");
 		} catch (IOException eg) {
@@ -163,7 +163,7 @@ public class UserChat extends JFrame implements ActionListener, Runnable, Window
 	@Override
 	public void windowClosing(WindowEvent arg0) {
 		// TODO Auto-generated method stub
-		out.println("<<"+userName+"님이 채팅방에 나가셨습니다>>");
+		out.println("<<"+seatNum+"번 손님이 채팅방에 나가셨습니다>>");
 		out.println("k121313231");
 		
 	}
