@@ -24,6 +24,7 @@ public class AdminGUI extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	JPanel contentPane, grid;
 	JButton btn1, btn2,btn3;
 	JLabel la1, la2, la3;
@@ -190,6 +191,13 @@ public class AdminGUI extends JFrame implements ActionListener{
 	}
 
 >>>>>>> edb4ac32fa8841c79b610fbbe54cef6015015830
+=======
+
+	JPanel contentPane, grid;
+	JButton btn1, btn2,btn3;
+	JLabel la1, la2, la3;
+	
+>>>>>>> fa6db2b2a0312b1b9c906e309fb1a9ad19994737
 	public void managerWindow() {
 
 		setTitle("관리자창");

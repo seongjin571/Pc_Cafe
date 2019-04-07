@@ -26,7 +26,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 
-public class AdminChat extends JFrame implements ActionListener, WindowListener {
+public class AdminChat extends JFrame implements WindowListener {
 	private static final long serialVersionUID = 1L;
 	JButton but_input;
 	JTextArea textArea;
@@ -45,9 +45,8 @@ public class AdminChat extends JFrame implements ActionListener, WindowListener 
 			serverSocket = new ServerSocket(3000);
 			while (true) {
 				client = serverSocket.accept();
-//				Chatting chatting = new Chatting(client);
-			    Runnable chatting = new ServerThread(client);
-			    Thread t = new Thread(chatting);
+				Runnable chatting = new ServerThread(client);
+				Thread t = new Thread(chatting);
 
 				t.start();
 			}
@@ -55,112 +54,15 @@ public class AdminChat extends JFrame implements ActionListener, WindowListener 
 			System.out.println("해당 포트 번호에 연결할 수 없습니다!");
 		} finally {
 			if (client != null) {
-					client.close();
-				} 
-			
+				client.close();
+			}
+
 			if (serverSocket != null) {
-					serverSocket.close();
+				serverSocket.close();
 			}
 			System.out.println("**서버 종료**");
 		}
-	}
-
-	public void chatStart() {
-		setSize(550, 600);
-		setLocation(100, 180);
-		f1 = new Font("돋움", Font.BOLD, 30);
-		addWindowListener(this);
-		setTitle("SeJong Pc Cafe");
-		JPanel panel = new JPanel();
-		name = new JLabel("SeJong Pc Cafe 관리자 채팅방");
-		name.setFont(f1);
-		JPanel panel2 = new JPanel();
-		textArea = new JTextArea(25, 40);
-		textInput = new JTextField(20);
-		textInput.registerKeyboardAction(this, "input", KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
-				JComponent.WHEN_FOCUSED);
-		but_input = new JButton("입력");
-		but_input.setActionCommand("input");
-		but_input.addActionListener(this);
-		panel2.add(name);
-		panel.add(textArea);
-		panel.add(textInput);
-		panel.add(but_input);
-		add(panel2, BorderLayout.NORTH);
-		add(panel);
-		setVisible(true);
-
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-//		string_checker ck = new string_checker();
-		String s;
-		String in_str, return_str = null;
-		in_str = textInput.getText();
-//		return_str=ck.check(in_str);
-		s = "관리자 : " + in_str;
-		if (e.getActionCommand() == "input") {
-			textArea.append(s + " " + nowTime() + "\n");
-			out.println(s);
-			textInput.setText("");
-		}
-	}
-
-	public String nowTime() {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH시 mm분 ss초");
-		LocalDateTime time = LocalDateTime.now();
-		String nowTime = " [" + time.format(formatter) + "]";
-		return nowTime;
-
-	}
-
-
-	class Chatting extends Thread {
-		Socket client;
-
-		Chatting(Socket client) {
-			this.client = client;
-		}
-
-		@Override
-		public void run() {
-
-			try {
-				out = new PrintWriter(client.getOutputStream(), true);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			chatStart();
-			textArea.append("클라이언트가 접속되었습니다.\n");
-
-			try {
-				String return_str = "";
-//			string_checker ck = new string_checker();//d
-				while ((inputLine = in.readLine()) != null) {
-//				return_str=ck.check(inputLine);
-					String s = inputLine + " " + nowTime() + "\n";
-					textArea.append(s);
-				}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			out.close();
-			try {
-				in.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		
 	}
 
 	@Override

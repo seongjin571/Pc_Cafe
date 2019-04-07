@@ -133,6 +133,7 @@ public class PcDao{
 		   
 		   try {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			count=checkStock(ingredient);
 			//Àç·áÀÇ Àç°í ¼ö¸¦ ÆÄ¾Ç
 			if(count-num<0) {
@@ -151,6 +152,13 @@ public class PcDao{
 				JOptionPane.showMessageDialog(null, "ìž¬ê³ ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.");
 				return 0;
 >>>>>>> edb4ac32fa8841c79b610fbbe54cef6015015830
+=======
+			count=checkStock(ingredient);
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ä¾ï¿½
+			if(count-num<0) {
+				JOptionPane.showMessageDialog(null, "Ç°ï¿½ï¿½Ç¾ï¿½ï¿½Ï´ï¿½.");
+				throw new Exception();
+>>>>>>> fa6db2b2a0312b1b9c906e309fb1a9ad19994737
 			}
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn=DriverManager.getConnection(dburl,dbUser,dbpasswd);
@@ -204,7 +212,7 @@ public class PcDao{
 				rs=ps.executeQuery();
 				while (rs.next()) {count=rs.getInt("count");}
 
-            //Àç·áÀÇ Àç°í ¼ö¸¦ ÇÑ °³ ÁÙÀÓ
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -305,7 +313,7 @@ public class PcDao{
 				colNames[i]=meta.getColumnName(i+1);
 			}
 
-            //Àç·áÀÇ Àç°í ¼ö¸¦ ÇÑ °³ ÁÙÀÓ
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -356,7 +364,7 @@ public class PcDao{
 				list.add(order);
 			}
 
-            //Àç·áÀÇ Àç°í ¼ö¸¦ ÇÑ °³ ÁÙÀÓ
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -400,7 +408,7 @@ public class PcDao{
 				total+=price;
 			}
 
-            //Àç·áÀÇ Àç°í ¼ö¸¦ ÇÑ °³ ÁÙÀÓ
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -447,7 +455,7 @@ public class PcDao{
 				map.put(name,count);
 			}
 
-            //Àç·áÀÇ Àç°í ¼ö¸¦ ÇÑ °³ ÁÙÀÓ
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

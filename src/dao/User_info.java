@@ -89,13 +89,11 @@ public class User_info {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(dburl, dbUser, dbpwd);
-			String sql = "insert into user_inf value(?,?,?,?,?,0)";
+			String sql = "insert into user_inf value(?,?,?,0)";
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, null);
-			ps.setString(2, null);
-			ps.setString(3, u.getU_id());
-			ps.setString(4, u.getU_pw());
-			ps.setString(5, u.getU_email());
+			ps.setString(1, u.getU_id());
+			ps.setString(2, u.getU_pw());
+			ps.setString(3, u.getU_email());
 			result = ps.executeUpdate();
 			
 		} catch (ClassNotFoundException e) {
@@ -289,7 +287,7 @@ public class User_info {
 				food=PcDao.getFood(name);
 				System.out.println(food);
 				
-				String[] ingredient=food.getIngredients().split(",");//¡÷πÆµ» ¿ΩΩƒ¿« ¿Á∑·∏¶ ≥™¥≤º≠ Stringø° ¿˙¿Â
+				String[] ingredient=food.getIngredients().split(",");//ÔøΩ÷πÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩ·∏¶ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ StringÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ
 				int[] count=new int[ingredient.length];
 				
 				for(int i=0;i<count.length;i++) count[i]=1;
@@ -300,8 +298,8 @@ public class User_info {
 					if(size.equals("large")) for(int i=0;i<count.length;i++)count[i]++;
 				}
 				
-				for(int i=0;i<ingredient.length;i++) {//¿Á∞Ì ºˆ∞° 1∞≥ ¿Ã∞≈≥™ 2∞≥ ¿Ãπ«∑Œ πËø≠ø° ±Ê¿Ãø° ∏¬√Á π›∫π
-					int check=PcDao.useStock(ingredient[i],count[i]);//¿Á∞Ì ºˆ∏¶ «— ∞≥æø ¡Ÿø©¡‹
+				for(int i=0;i<ingredient.length;i++) {//ÔøΩÔøΩÔøΩ ÔøΩÔøΩ 1ÔøΩÔøΩ ÔøΩÃ∞≈≥ÔøΩ 2ÔøΩÔøΩ ÔøΩÃπ«∑ÔøΩ ÔøΩËø≠ÔøΩÔøΩ ÔøΩÔøΩÔøΩÃøÔøΩ ÔøΩÔøΩÔøΩÔøΩ ÔøΩ›∫ÔøΩ
+					int check=PcDao.useStock(ingredient[i],count[i]);//ÔøΩÔøΩÔøΩ ÔøΩÔøΩ ÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ ÔøΩŸøÔøΩÔøΩÔøΩ
 					if(check==0) throw new Exception();
 				}
 				
@@ -316,10 +314,13 @@ public class User_info {
 				ps.setString(5, tem);
 				result = ps.executeUpdate();
 <<<<<<< HEAD
+<<<<<<< HEAD
 				
 =======
 //				AdminMain(); //ÏöîÍ∏∞Ïöî
 >>>>>>> edb4ac32fa8841c79b610fbbe54cef6015015830
+=======
+>>>>>>> fa6db2b2a0312b1b9c906e309fb1a9ad19994737
 			
 			
 		} catch (Exception e) {
@@ -355,14 +356,62 @@ public class User_info {
 		}
 		 return result;
 	 }
-	public int updateSeat(String id, int number) {
+	public int confirmSeat(int num) {
+		int result = 0;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection(dburl, dbUser, dbpwd);
+			String sql = "select exist_id from seat where num = ? ";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, num);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				String exist_id = rs.getString("exist_id");
+				if(exist_id.equals(""))
+					result = 0;
+				else 
+					result = -1;// Ïù¥ÎØ∏ ÎàÑÍ∞Ä ÏïâÏùÄ ÏûêÎ¶¨
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			
+			if(ps!=null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			if(conn!=null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return result;
+		
+	}
+	public int updateSeat(String id, int num) {
 		int result = 0;
 		 try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(dburl, dbUser, dbpwd);
-			String sql = "update user_inf set num ="+number+" where u_id = ?";
+			String sql = "update seat set exist_id = ? where num = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
+			ps.setInt(2, num);
 			result = ps.executeUpdate();
 			
 			
@@ -381,6 +430,7 @@ public class User_info {
 					e.printStackTrace();
 				}
 			}
+			
 			if(ps!=null) {
 				try {
 					ps.close();
@@ -401,4 +451,57 @@ public class User_info {
 		}
 		 return result;
 	 }
+	
+	
+	public int logout(String id) {
+		int result = 0;
+		 try {
+			String blank="";
+			
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection(dburl, dbUser, dbpwd);
+			String sql = "update seat set exist_id = ? where exist_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1,blank);
+			ps.setString(2, id);
+			
+			result = ps.executeUpdate();
+			
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			if(ps!=null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			if(conn!=null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		 return result;
+	 }	
 }

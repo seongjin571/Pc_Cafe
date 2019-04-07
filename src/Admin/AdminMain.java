@@ -7,11 +7,11 @@ import dto.*;
 import java.io.IOException;
 import java.util.*;
 
-
 public class AdminMain {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -26,6 +26,10 @@ public class AdminMain {
 >>>>>>> edb4ac32fa8841c79b610fbbe54cef6015015830
 		
 		AdminGUI window=new AdminGUI();
+=======
+
+		AdminGUI window = new AdminGUI();
+>>>>>>> fa6db2b2a0312b1b9c906e309fb1a9ad19994737
 		window.managerWindow();
 		AdminChat adminChat = new AdminChat();
 //		adminChat.serverStart();

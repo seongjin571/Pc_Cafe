@@ -25,7 +25,7 @@ public class UserSeat  extends JFrame implements ActionListener{
 	User_info u_inf = new User_info();
 
 	
-	int i, number;
+	int i, num;
 	String id;
 	
 	public UserSeat(){
@@ -34,7 +34,7 @@ public class UserSeat  extends JFrame implements ActionListener{
 
 		
 		setSize(900,900);//전체 창 크기 설정
-		setBounds(700, 40,900,900);// 위치, 크기 설정
+		setBounds(510, 40,900,900);// 위치, 크기 설정
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);//x눌렀을 때 종료
 		setResizable(false);//창 크기 고정
@@ -78,21 +78,30 @@ public class UserSeat  extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		 if(e.getSource()==confirm) {
-			 dispose();//seat 창 삭제
-			 u_inf.updateSeat(id, number);
-			 UserMenu j3 = new UserMenu("Menu",id);// 새 Menu 창 생성
-				j3.setVisible(true);
-				j3.setSize(882, 600);//크기 설정
-				j3.setLocation(500, 100);//생성될 위치 설정
-				j3.addWindowListener(new WindowAdapter() {//x누르면 새창만 종료되게
-					public void windowClosing(WindowEvent e) {
-						j3.setVisible(false);
-						j3.dispose();//Menu 창 종료
+			 
+			 int result = u_inf.confirmSeat(num);
+			 try {
+					if(result==-1) throw new Exception();
+					u_inf.updateSeat(id, num);
+					UserMenu j3 = new UserMenu("Menu",id);// 새 Menu 창 생성
+					j3.setVisible(true);
+					j3.setSize(882, 600);//크기 설정
+					j3.setLocation(500, 100);//생성될 위치 설정
+					j3.addWindowListener(new WindowAdapter() {//x누르면 새창만 종료되게
+						public void windowClosing(WindowEvent e) {
+							j3.setVisible(false);
+							j3.dispose();//Menu 창 종료
+						}
+					});
+					}catch(Exception ex) {
+						JOptionPane.showMessageDialog(null, "이미 선택된 자석입니다.");
 					}
-				});
+			 
+			 
+			 
 		}
 		 else if(e.getSource()==b[0]||e.getSource()==b[1]||e.getSource()==b[2]||e.getSource()==b[3]||e.getSource()==b[4]||e.getSource()==b[5]||e.getSource()==b[6]||e.getSource()==b[7]||e.getSource()==b[8]) {
-				number=Integer.parseInt(e.getActionCommand());//1~9 좌석 넘버 저장
+				num=Integer.parseInt(e.getActionCommand());//1~9 좌석 넘버 저장
 		 }
 	}
 	public static void main(String[] args)  {
