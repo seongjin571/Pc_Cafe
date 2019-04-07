@@ -1,7 +1,6 @@
 package Chat;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +11,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -26,46 +24,26 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 
-public class AdminChat extends JFrame implements ActionListener, WindowListener {
+class ServerThread extends JFrame implements Runnable, ActionListener, WindowListener {
+
 	private static final long serialVersionUID = 1L;
+	// 멤버변수로 선언
 	JButton but_input;
 	JTextArea textArea;
 	JTextField textInput;
 	JLabel name;
 	Font f1;
-	static ServerSocket serverSocket = null;
-	static Socket client = null;
-	static PrintWriter out;
-	static BufferedReader in;
-	static String inputLine, outputLine;
+	private Socket socket;
+	private BufferedReader in = null;
+	private PrintWriter out = null;
+//	private String userIP = socket.getInetAddress().toString();F
 
-	public AdminChat() throws IOException {
-		System.out.println("서버 시작!!");
-		try {
-			serverSocket = new ServerSocket(3000);
-			while (true) {
-				client = serverSocket.accept();
-//				Chatting chatting = new Chatting(client);
-			    Runnable chatting = new ServerThread(client);
-			    Thread t = new Thread(chatting);
-
-				t.start();
-			}
-		} catch (IOException e) {
-			System.out.println("해당 포트 번호에 연결할 수 없습니다!");
-		} finally {
-			if (client != null) {
-					client.close();
-				} 
-			
-			if (serverSocket != null) {
-					serverSocket.close();
-			}
-			System.out.println("**서버 종료**");
-		}
+	ServerThread(Socket client) {
+		this.socket = client;
 	}
 
-	public void chatStart() {
+	// 오버라이딩일 경우 throw 불가.
+	public void run() {
 		setSize(550, 600);
 		setLocation(100, 180);
 		f1 = new Font("돋움", Font.BOLD, 30);
@@ -89,16 +67,53 @@ public class AdminChat extends JFrame implements ActionListener, WindowListener 
 		add(panel2, BorderLayout.NORTH);
 		add(panel);
 		setVisible(true);
+		try {
+			service();
+		} catch (IOException e) {
+			System.out.println("** 님 접속 종료.");
+		} finally {
+			try {
+				closeAll();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 
+	private void service() throws IOException {
+//	 chatStart();
+		in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+		out = new PrintWriter(socket.getOutputStream(), true);
+		String str = null;
+		while (true) {
+			str = in.readLine();
+			if (str == null) {
+				System.out.println( "님이 연결을 종료했습니다.");
+				break;
+			}
+			System.out.println( "님: " + str);
+			out.println(str);
+		}
+	}
+
+	public void closeAll() throws IOException {
+		if (out != null)
+			out.close();
+		if (in != null)
+			in.close();
+		if (socket != null)
+			socket.close();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		string_checker ck = new string_checker();
+		// TODO Auto-generated method stub
+//	string_checker ck = new string_checker();
 		String s;
 		String in_str, return_str = null;
 		in_str = textInput.getText();
-//		return_str=ck.check(in_str);
+//	return_str=ck.check(in_str);
 		s = "관리자 : " + in_str;
 		if (e.getActionCommand() == "input") {
 			textArea.append(s + " " + nowTime() + "\n");
@@ -115,93 +130,45 @@ public class AdminChat extends JFrame implements ActionListener, WindowListener 
 
 	}
 
-
-	class Chatting extends Thread {
-		Socket client;
-
-		Chatting(Socket client) {
-			this.client = client;
-		}
-
-		@Override
-		public void run() {
-
-			try {
-				out = new PrintWriter(client.getOutputStream(), true);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			chatStart();
-			textArea.append("클라이언트가 접속되었습니다.\n");
-
-			try {
-				String return_str = "";
-//			string_checker ck = new string_checker();//d
-				while ((inputLine = in.readLine()) != null) {
-//				return_str=ck.check(inputLine);
-					String s = inputLine + " " + nowTime() + "\n";
-					textArea.append(s);
-				}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			out.close();
-			try {
-				in.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
-
 	@Override
-	public void windowActivated(WindowEvent arg0) {
+	public void windowActivated(WindowEvent e) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void windowClosed(WindowEvent arg0) {
+	public void windowClosed(WindowEvent e) {
 		// TODO Auto-generated method stub
 		System.exit(0);
 	}
 
 	@Override
-	public void windowClosing(WindowEvent arg0) {
+	public void windowClosing(WindowEvent e) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void windowDeactivated(WindowEvent arg0) {
+	public void windowDeactivated(WindowEvent e) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void windowDeiconified(WindowEvent arg0) {
+	public void windowDeiconified(WindowEvent e) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void windowIconified(WindowEvent arg0) {
+	public void windowIconified(WindowEvent e) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void windowOpened(WindowEvent arg0) {
+	public void windowOpened(WindowEvent e) {
 		// TODO Auto-generated method stub
-
+		
 	}
 }

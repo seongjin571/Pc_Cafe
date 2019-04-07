@@ -2,7 +2,7 @@ package dto;
 
 
 public class User {
-   private int id;
+   private Integer num;
    private String u_id;
    private String u_pw;
    private String u_email;
@@ -11,7 +11,7 @@ public class User {
       
    }
    public User(String u_id, String u_pw, String u_email, int u_price){
-      //this.id = id;
+      //this.num = null;
       this.u_id = u_id;
       this.u_pw = u_pw;
       this.u_email = u_email;
@@ -23,9 +23,9 @@ public class User {
 	  this.u_pw = u_pw;
 	  this.u_price = u_price;
 	   }
-   public int getId() {
-      return id;
-   }
+//   public int getId() {
+//      return id;
+//   }
    public String getU_id() {
       return u_id;
    }
@@ -38,9 +38,9 @@ public class User {
    public int getU_price() {
 	  return u_price;
    }
-   public void setId(int id) {
-      this.id = id;
-   }
+//   public void setId(int id) {
+//      this.id = id;
+//   }
    public void setU_id(String u_id) {
       this.u_id = u_id;
    }
@@ -54,7 +54,7 @@ public class User {
 	  this.u_price =  u_price;
 	   }
    public String toString() {
-      return "Id = " + id + ", u_id = " + u_id + ", u_pw = "+u_pw + ", u_email = "+u_email + ", u_price = "+u_price;
+      return "u_id = " + u_id + ", u_pw = "+u_pw + ", u_email = "+u_email + ", u_price = "+u_price;
    }
 
 }

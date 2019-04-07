@@ -64,7 +64,7 @@ public class User_info {
 			
 			if(ps!=null) {
 				try {
-					rs.close();
+					ps.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -73,7 +73,7 @@ public class User_info {
 			
 			if(conn!=null) {
 				try {
-					rs.close();
+					conn.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -89,11 +89,13 @@ public class User_info {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(dburl, dbUser, dbpwd);
-			String sql = "insert into user_inf value(?,?,?,0)";
+			String sql = "insert into user_inf value(?,?,?,?,?,0)";
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, u.getU_id());
-			ps.setString(2, u.getU_pw());
-			ps.setString(3, u.getU_email());
+			ps.setString(1, null);
+			ps.setString(2, null);
+			ps.setString(3, u.getU_id());
+			ps.setString(4, u.getU_pw());
+			ps.setString(5, u.getU_email());
 			result = ps.executeUpdate();
 			
 		} catch (ClassNotFoundException e) {
@@ -107,7 +109,7 @@ public class User_info {
 			
 			if(ps!=null) {
 				try {
-					rs.close();
+					ps.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -116,7 +118,7 @@ public class User_info {
 			
 			if(conn!=null) {
 				try {
-					rs.close();
+					conn.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -140,14 +142,14 @@ public class User_info {
 				String u_pw = rs.getString("u_pw");
 				if(u_id.equals(id)) {
 					if(u_pw.equals(pw)) {
-						result = 1;// id, pw µ—¥Ÿ ¿œƒ°
+						result = 1;// id, pw ÎëòÎã§ ÏùºÏπò
 					}
 					else
-						result = 2;// id∏∏ ¿œƒ°
+						result = 2;// idÎßå ÏùºÏπò
 				}
 			}
 			else {
-				result = 3;// id, pw µ—¥Ÿ ∫“¿œƒ°
+				result = 3;// id, pw ÎëòÎã§ Î∂àÏùºÏπò
 			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -160,7 +162,7 @@ public class User_info {
 			
 			if(ps!=null) {
 				try {
-					rs.close();
+					ps.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -169,7 +171,7 @@ public class User_info {
 			
 			if(conn!=null) {
 				try {
-					rs.close();
+					conn.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -210,7 +212,7 @@ public class User_info {
 			
 			if(ps!=null) {
 				try {
-					rs.close();
+					ps.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -219,7 +221,7 @@ public class User_info {
 			
 			if(conn!=null) {
 				try {
-					rs.close();
+					conn.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -259,7 +261,7 @@ public class User_info {
 			
 			if(ps!=null) {
 				try {
-					rs.close();
+					ps.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -268,7 +270,7 @@ public class User_info {
 			
 			if(conn!=null) {
 				try {
-					rs.close();
+					conn.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -277,7 +279,6 @@ public class User_info {
 		}
 		 return result;
 	 }
-
 	public int updateOrder(String name, int price, String shot, String size, String tem) {
 		
 		int result = 0;
@@ -314,7 +315,11 @@ public class User_info {
 				ps.setString(4, size);
 				ps.setString(5, tem);
 				result = ps.executeUpdate();
+<<<<<<< HEAD
 				
+=======
+//				AdminMain(); //ÏöîÍ∏∞Ïöî
+>>>>>>> edb4ac32fa8841c79b610fbbe54cef6015015830
 			
 			
 		} catch (Exception e) {
@@ -332,7 +337,7 @@ public class User_info {
 			
 			if(ps!=null) {
 				try {
-					rs.close();
+					ps.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -341,7 +346,7 @@ public class User_info {
 			
 			if(conn!=null) {
 				try {
-					rs.close();
+					conn.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -350,5 +355,50 @@ public class User_info {
 		}
 		 return result;
 	 }
-	
+	public int updateSeat(String id, int number) {
+		int result = 0;
+		 try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection(dburl, dbUser, dbpwd);
+			String sql = "update user_inf set num ="+number+" where u_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			result = ps.executeUpdate();
+			
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(ps!=null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			if(conn!=null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		 return result;
+	 }
 }

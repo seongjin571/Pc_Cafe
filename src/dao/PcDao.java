@@ -132,11 +132,25 @@ public class PcDao{
 		   
 		   
 		   try {
+<<<<<<< HEAD
 			count=checkStock(ingredient);
 			//Àç·áÀÇ Àç°í ¼ö¸¦ ÆÄ¾Ç
 			if(count-num<0) {
 				JOptionPane.showMessageDialog(null, "Ç°ÀıµÇ¾ú½À´Ï´Ù.");
 				throw new Exception();
+=======
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn=DriverManager.getConnection(dburl,dbUser,dbpasswd);
+			String sql= "select name,count from stock where name=?";
+			ps= conn.prepareStatement(sql);
+			ps.setObject(1, ingredient);
+			rs=ps.executeQuery();
+			while (rs.next()) {count=rs.getInt("count");}
+			//ì¬ë£Œì˜ ì¬ê³  ìˆ˜ë¥¼ íŒŒì•…
+			if(count-num<0) {
+				JOptionPane.showMessageDialog(null, "ì¬ê³ ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.");
+				return 0;
+>>>>>>> edb4ac32fa8841c79b610fbbe54cef6015015830
 			}
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn=DriverManager.getConnection(dburl,dbUser,dbpasswd);
@@ -239,7 +253,7 @@ public class PcDao{
 				 list.add(stock);
 			}
 
-            //Àç·áÀÇ Àç°í ¼ö¸¦ ÇÑ °³ ÁÙÀÓ
+            //ì¬ë£Œì˜ ì¬ê³  ìˆ˜ë¥¼ í•œ ê°œ ì¤„ì„
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
