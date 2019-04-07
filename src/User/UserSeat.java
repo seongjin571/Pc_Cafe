@@ -94,7 +94,11 @@ public class UserSeat  extends JFrame implements ActionListener{
 			 boolean exist =false;
 			 int result = u_inf.confirmSeat(num);
 			 
+<<<<<<< HEAD
 			 try {				 	
+=======
+			 try {
+>>>>>>> c7633f3c5063b69e0ff1998f03378bd3fc5d8718
 					if(result==-1) throw new Exception();
 					u_inf.logout(id);
 					u_inf.updateSeat(id, num);
@@ -106,8 +110,10 @@ public class UserSeat  extends JFrame implements ActionListener{
 						public void windowClosing(WindowEvent e) {
 							j3.setVisible(false);
 							j3.dispose();//Menu 창 종료
+							u_inf.logout(id);
 						}
 					});
+					dispose();
 					}catch(Exception ex) {
 						JOptionPane.showMessageDialog(null, "이미 선택된 자석입니다.");
 					}
