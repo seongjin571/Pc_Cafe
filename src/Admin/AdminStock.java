@@ -35,7 +35,7 @@ public class AdminStock extends JFrame implements WindowListener, ActionListener
 		Object[] colNames; 
 		Object[][] data; 
 		contentPane = new JPanel();
-		setTitle("Àç°í °ü¸® ÇÁ·Î±×·¥");
+		setTitle("ì¬ê³  ê´€ë¦¬ í”„ë¡œê·¸ë¨");
 		addWindowListener(this);
 
 		setLayout(null);
@@ -57,7 +57,7 @@ public class AdminStock extends JFrame implements WindowListener, ActionListener
 			data[0][r] = list.get(r).getCount();
 		}
 
-		la1 = new JLabel("Àç°í ÇöÈ²");
+		la1 = new JLabel("ì¬ê³  í˜„í™©");
 		la1.setBounds(35, 5, 100, 50);
 		add(la1);
 
@@ -67,24 +67,24 @@ public class AdminStock extends JFrame implements WindowListener, ActionListener
 		j.setBounds(35, 50, 900, 150);
 		add(j);
 
-		la2 = new JLabel("¹°Ç°ÁÖ¹®");
+		la2 = new JLabel("ë¬¼í’ˆì£¼ë¬¸");
 		la2.setBounds(35, 200, 100, 50);
 		add(la2);
 
 		grid1 = new JPanel();
 		grid1.setLayout(new GridLayout(2, 5, 30, 30));
 
-		btn1 = new JButton("°Ç»§");
-		btn2 = new JButton("´©³×¶ì³×");
-		btn3 = new JButton("»§");
-		btn4 = new JButton("»õ¿ì±ø");
-		btn5 = new JButton("¼Ò¼¼Áö");
-		btn6 = new JButton("¾ÆÀÌ½ºÆ¼");
-		btn7 = new JButton("¿ìÀ¯");
-		btn8 = new JButton("¿øµÎ");
-		btn9 = new JButton("Áø¶ó¸é");
-		btn10 = new JButton("Â¥ÆÄ°ÔÆ¼");
-		btn11 = new JButton("È¨·±º¼");
+		btn1 = new JButton("ê±´ë¹µ");
+		btn2 = new JButton("ëˆ„ë„¤ë ë„¤");
+		btn3 = new JButton("ë¹µ");
+		btn4 = new JButton("ìƒˆìš°ê¹¡");
+		btn5 = new JButton("ì†Œì„¸ì§€");
+		btn6 = new JButton("ì•„ì´ìŠ¤í‹°");
+		btn7 = new JButton("ìš°ìœ ");
+		btn8 = new JButton("ì›ë‘");
+		btn9 = new JButton("ì§„ë¼ë©´");
+		btn10 = new JButton("ì§œíŒŒê²Œí‹°");
+		btn11 = new JButton("í™ˆëŸ°ë³¼");
 
 		la3 = new JLabel();
 		la3.setBounds(35, 475, 500, 50);
@@ -123,11 +123,11 @@ public class AdminStock extends JFrame implements WindowListener, ActionListener
 		grid2 = new JPanel();
 		grid2.setLayout(new GridLayout(1, 4, 100, 100));
 
-		btn12 = new JButton("ÁÖ¹®");
+		btn12 = new JButton("ì£¼ë¬¸");
 		btn12.addActionListener(this);
-		btn13 = new JButton("ÆÇ¸ÅÇöÈ²");
+		btn13 = new JButton("íŒë§¤í˜„í™©");
 		btn13.addActionListener(this);
-		btn14 = new JButton("ÃÊ±âÈ­");
+		btn14 = new JButton("ì´ˆê¸°í™”");
 		btn14.addActionListener(this);
 
 		grid2.add(btn12);
@@ -198,7 +198,7 @@ public class AdminStock extends JFrame implements WindowListener, ActionListener
 				setVisible(false);
 				new AdminStock().showStock();
 			} catch (Exception ex) {
-				JOptionPane.showMessageDialog(null, "Àß¸øµÈ ÀÔ·Â ÀÔ´Ï´Ù.");
+				JOptionPane.showMessageDialog(null, "ì˜ëª»ëœ ì…ë ¥ ì…ë‹ˆë‹¤.");
 			}
 		} else if (e.getSource() == btn13) {
 			setVisible(false);
@@ -211,8 +211,8 @@ public class AdminStock extends JFrame implements WindowListener, ActionListener
 			e.getSource() == btn5 || e.getSource() == btn6 || e.getSource() == btn7 || e.getSource() == btn8||
 			e.getSource() == btn9 || e.getSource() == btn10 || e.getSource() == btn11) {
 			str = e.getActionCommand();
-			la3.setText(e.getActionCommand()+"À»/¸¦ ÁÖ¹®ÇÏ½Ç°Ç°¡¿ä? ¼ö·®À» ÀÔ·ÂÇÏ¼¼¿ä.");
-			la4.setText("ÁÖ¹®¼ö·®ÀÔ·Â:");
+			la3.setText(e.getActionCommand()+"ì„/ë¥¼ ì£¼ë¬¸í•˜ì‹¤ê±´ê°€ìš”? ìˆ˜ëŸ‰ì„ ì…ë ¥í•˜ì„¸ìš”.");
+			la4.setText("ì£¼ë¬¸ìˆ˜ëŸ‰ì…ë ¥:");
 			add(text);
 		}
 
