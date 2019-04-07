@@ -130,35 +130,12 @@ public class PcDao{
 		   int count=0;
 		   int result=0;
 		   
-		   
 		   try {
-<<<<<<< HEAD
-<<<<<<< HEAD
 			count=checkStock(ingredient);
-			//����� ��� ���� �ľ�
+			//占쏙옙占쏙옙占� 占쏙옙占� 占쏙옙 占식억옙
 			if(count-num<0) {
-				JOptionPane.showMessageDialog(null, "ǰ���Ǿ����ϴ�.");
+				JOptionPane.showMessageDialog(null, "품占쏙옙퓸占쏙옙求占�.");
 				throw new Exception();
-=======
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn=DriverManager.getConnection(dburl,dbUser,dbpasswd);
-			String sql= "select name,count from stock where name=?";
-			ps= conn.prepareStatement(sql);
-			ps.setObject(1, ingredient);
-			rs=ps.executeQuery();
-			while (rs.next()) {count=rs.getInt("count");}
-			//재료의 재고 수를 파악
-			if(count-num<0) {
-				JOptionPane.showMessageDialog(null, "재고가 부족합니다.");
-				return 0;
->>>>>>> edb4ac32fa8841c79b610fbbe54cef6015015830
-=======
-			count=checkStock(ingredient);
-			//����� ��� �� �ľ�
-			if(count-num<0) {
-				JOptionPane.showMessageDialog(null, "ǰ��Ǿ��ϴ�.");
-				throw new Exception();
->>>>>>> fa6db2b2a0312b1b9c906e309fb1a9ad19994737
 			}
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn=DriverManager.getConnection(dburl,dbUser,dbpasswd);
@@ -212,7 +189,7 @@ public class PcDao{
 				rs=ps.executeQuery();
 				while (rs.next()) {count=rs.getInt("count");}
 
-            //����� ��� �� �� �� ����
+            //占쏙옙占쏙옙占� 占쏙옙占� 占쏙옙 占쏙옙 占쏙옙 占쏙옙占쏙옙
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -261,7 +238,7 @@ public class PcDao{
 				 list.add(stock);
 			}
 
-            //재료의 재고 수를 한 개 줄임
+            //�옱猷뚯쓽 �옱怨� �닔瑜� �븳 媛� 以꾩엫
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -313,7 +290,7 @@ public class PcDao{
 				colNames[i]=meta.getColumnName(i+1);
 			}
 
-            //����� ��� �� �� �� ����
+            //占쏙옙占쏙옙占� 占쏙옙占� 占쏙옙 占쏙옙 占쏙옙 占쏙옙占쏙옙
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -364,7 +341,7 @@ public class PcDao{
 				list.add(order);
 			}
 
-            //����� ��� �� �� �� ����
+            //占쏙옙占쏙옙占� 占쏙옙占� 占쏙옙 占쏙옙 占쏙옙 占쏙옙占쏙옙
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -408,7 +385,7 @@ public class PcDao{
 				total+=price;
 			}
 
-            //����� ��� �� �� �� ����
+            //占쏙옙占쏙옙占� 占쏙옙占� 占쏙옙 占쏙옙 占쏙옙 占쏙옙占쏙옙
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -455,7 +432,7 @@ public class PcDao{
 				map.put(name,count);
 			}
 
-            //����� ��� �� �� �� ����
+            //占쏙옙占쏙옙占� 占쏙옙占� 占쏙옙 占쏙옙 占쏙옙 占쏙옙占쏙옙
 		   } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
