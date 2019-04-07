@@ -19,7 +19,7 @@ public class UserMenu extends JFrame implements ActionListener, ItemListener{
 
 	private static final long serialVersionUID = 1L;
 	JLabel status0, status1, status2, status3, ice_hot, size, shot;
-	JPanel background, choice1, choice2, choice3, grid1;
+	JPanel background, choice1, choice2, choice3, grid1,grid2;
 	JButton b[], chat, cancle, pay,logout,change;
 	JRadioButton ice, hot, small, tall, large, yes, no;
 	ButtonGroup group1, group2, group3;
@@ -40,7 +40,7 @@ public class UserMenu extends JFrame implements ActionListener, ItemListener{
 		chat = new JButton("채팅");
 		chat.setActionCommand("chat"); 
 		chat.addActionListener(this);
-		chat.setBounds(110, 453, 200, 50);// 위치, 크기 설정
+		chat.setBounds(35, 453, 200, 50);// 위치, 크기 설정
 		chat.setBackground(new Color(210, 50, 50));// 색상 빨간색
 		chat.setFont(new Font("", Font.PLAIN, 17));// 글씨체 설정
 		chat.setForeground(new Color(255, 255, 255));// 글씨 하얀색
@@ -76,22 +76,20 @@ public class UserMenu extends JFrame implements ActionListener, ItemListener{
 			grid1.add(b[i]);
 		grid1.setBounds(35, 50, 800, 200);
 		add(grid1);
-
 		
+		grid2 = new JPanel();
+		grid2.setLayout(new GridLayout(1,4,30,30));
 		cancle = new JButton("Cancle");
 		logout = new JButton("logout");
 		change = new JButton("자리이동");
 		pay = new JButton("Pay");
-		
-		cancle.setBounds(490, 450, 100, 50);
-		logout.setBounds(350, 450, 100, 50);
-		change.setBounds(250, 450, 100, 50);
-		pay.setBounds(680, 450, 100, 50);
-		
-		add(cancle);
-		add(pay);
-		add(logout);
-		add(change);
+		grid2.add(cancle);
+		grid2.add(logout);
+		grid2.add(change);
+		change.addActionListener(this);
+		grid2.add(pay);
+		grid2.setBounds(300, 453, 500, 50);
+		add(grid2);
 		
 		
 		b[0].addActionListener(this);
@@ -419,7 +417,10 @@ public class UserMenu extends JFrame implements ActionListener, ItemListener{
 				choice3.repaint();
 			}
 		}
-		
+		if(e.getSource()==change) {
+			dispose();
+			new UserSeat();
+		}
 	}
 	
 		public void itemStateChanged(ItemEvent e) {
@@ -435,9 +436,9 @@ public class UserMenu extends JFrame implements ActionListener, ItemListener{
 				status1.setText(status0.getText());
 				status1.setText(status1.getText()+"/ ICE");
 			}
+			
 				
 		}
-	
-			
+		
 	
 }
