@@ -31,11 +31,11 @@ public class AdminSale extends JFrame implements WindowListener, ActionListener{
 		String[] colNames; 
 		Object[][] data; 
 
-		setTitle("ÆÇ¸Å ÇöÈ²");
+		setTitle("íŒë§¤ í˜„í™©");
 		addWindowListener(this);
 		setLayout(null);
 		contentPane = new JPanel();
-		la1 = new JLabel("ÆÇ¸Å¸®½ºÆ®");
+		la1 = new JLabel("íŒë§¤ë¦¬ìŠ¤íŠ¸");
 		la1.setBounds(35, 5, 100, 50);
 		add(la1);
 		
@@ -63,13 +63,13 @@ public class AdminSale extends JFrame implements WindowListener, ActionListener{
 		j.setBounds(35, 50, 900, 250);
 		add(j);
 	
-		la2 = new JLabel("¸Ş´ºº° ÆÇ¸Å·®");
+		la2 = new JLabel("ë©”ë‰´ë³„ íŒë§¤ëŸ‰");
 		la2.setBounds(35, 300, 100, 50);
 		add(la2);
 		
 		HashMap map = dao.CountOrder();
 		
-		colNames=new String[]{"ÀÌ¸§","ÆÇ¸Å°³¼ö"};
+		colNames=new String[]{"ì´ë¦„","íŒë§¤ê°œìˆ˜"};
 		colCount=colNames.length;
 
 		rowCount = map.size();
@@ -77,11 +77,11 @@ public class AdminSale extends JFrame implements WindowListener, ActionListener{
 		
 		int r=0;
 		data = new Object[rowCount][colCount];
-		Set<String> keys = map.keySet(); // ÇØ½Ã¸Ê map¿¡ ÀÖ´Â ¸ğµç Å°¸¦ Set ÄÃ·º¼ÇÀ¸·Î ¸®ÅÏ
-		Iterator<String> it = keys.iterator(); // SetÀÇ °¢ ¹®ÀÚ¿­À» ¼øÂ÷ °Ë»öÇÏ´Â Iterator ¸®ÅÏ
+		Set<String> keys = map.keySet(); // ï¿½Ø½Ã¸ï¿½ mapï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ Set ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		Iterator<String> it = keys.iterator(); // Setï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ï´ï¿½ Iterator ï¿½ï¿½ï¿½ï¿½
 		while(it.hasNext())  {
 		    String key = it.next(); // Å°
-		    Object value = map.get(key); // °ª
+		    Object value = map.get(key); // ï¿½ï¿½
 		    data[r][0]=key;
 		    data[r][1]=value;
 		    r++;
@@ -95,17 +95,17 @@ public class AdminSale extends JFrame implements WindowListener, ActionListener{
 		add(j);
 		
 		la3 = new JLabel();
-		la3.setFont(new Font("¸¼Àº°íµñ",Font.BOLD,40));
+		la3.setFont(new Font("ë§‘ì€ê³ ë”•",Font.BOLD,40));
 		la3.setBounds(35, 530, 900, 50);
 		add(la3);
 
 		grid1 = new JPanel();
 		grid1.setLayout(new GridLayout(1, 3, 100, 100));
 
-		btn1 = new JButton("¸ÅÃâ");
+		btn1 = new JButton("ë§¤ì¶œ");
 		btn1.addActionListener(this);
-		btn2 = new JButton("¸Ş´ºº°ÆÇ¸Å");
-		btn3 = new JButton("ÆÇ¸Å¸®½ºÆ®");
+		btn2 = new JButton("ë©”ë‰´ë³„íŒë§¤");
+		btn3 = new JButton("íŒë§¤ë¦¬ìŠ¤íŠ¸");
 
 		grid1.add(btn1);
 		grid1.add(btn2);
@@ -168,7 +168,7 @@ public class AdminSale extends JFrame implements WindowListener, ActionListener{
 		// TODO Auto-generated method stub
 		if (e.getSource() == btn1) {
 			int total=new PcDao().getOrderPrice();
-			String str="ÃÑ ¸ÅÃâÀº "+total+" ÀÔ´Ï´Ù.";
+			String str="ì´ ë§¤ì¶œì€ "+total+" ì…ë‹ˆë‹¤.";
 			la3.setText(str);
 		}
 	}
