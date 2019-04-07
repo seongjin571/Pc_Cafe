@@ -10,6 +10,7 @@ import java.util.*;
 
 import dto.Food;
 import dto.Order;
+import dto.Seat;
 import dto.User;
 import Admin.*;
 
@@ -28,7 +29,8 @@ public class User_info {
 	 PcDao PcDao=null;
 	 Order order=null;
 	 Food food=null;
-	 
+	 ArrayList<Seat> table =new ArrayList();
+		 
 	 
 	public int compareID(String id) {
 		 
@@ -444,6 +446,7 @@ public class User_info {
 		 return result;
 	 }
 	
+
 	
 	public int logout(String id) {
 		int result = 0;
@@ -496,4 +499,49 @@ public class User_info {
 		}
 		 return result;
 	 }	
+	
+	@SuppressWarnings("finally")
+	public ArrayList<Seat> seatload() {
+		int result = 0;
+		Seat in=null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn= DriverManager.getConnection(dburl, dbUser, dbpwd);
+			String sql= "Select * from seat";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				int id1 = rs.getInt("num");
+				String name = rs.getString("exist_id");
+				in = new Seat(id1, name);
+				table.add(in);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}			
+			if(ps!=null) {
+				try {
+					ps.close();
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if(conn!=null) {
+				try {
+					conn.close();
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
+			}	
+			return table;
+		}
+	}	
 }
