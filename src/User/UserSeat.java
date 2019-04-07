@@ -23,8 +23,8 @@ public class UserSeat  extends JFrame implements ActionListener{
 	JPanel grid2;
 	JButton b[], confirm;
 	User_info u_inf = new User_info();
-
-	
+	ArrayList<Seat> table=new ArrayList();
+	Seat a;
 	int i, num;
 	String id;
 
@@ -33,10 +33,10 @@ public class UserSeat  extends JFrame implements ActionListener{
 		super("seat"); //창 이름 Login
 		setLayout(null); //레이아웃 내가 원하는 위치로
 
-		ArrayList<Seat> table=new ArrayList();
+	
 		table= u_inf.seatload();
 		String ck="";
-		Seat a;
+		
 		//System.out.print(table);
 		
 		setSize(900,900);//전체 창 크기 설정
@@ -91,10 +91,18 @@ public class UserSeat  extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		 if(e.getSource()==confirm) {
-			 
+			 boolean exist =false;
 			 int result = u_inf.confirmSeat(num);
 			 
 			 try {
+				 	for(int i=0;i<9;i++) {
+						a=table.get(i);
+						if(id.equals(a.getexist_id())) {
+							exist=true;
+							break;
+						}
+				 	}
+				
 					if(result==-1) throw new Exception();
 					u_inf.updateSeat(id, num);
 					UserMenu j3 = new UserMenu("Menu",id);// 새 Menu 창 생성
