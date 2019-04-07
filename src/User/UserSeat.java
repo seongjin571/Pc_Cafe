@@ -27,11 +27,17 @@ public class UserSeat  extends JFrame implements ActionListener{
 	
 	int i, num;
 	String id;
-	
+
 	public UserSeat(){
+	
 		super("seat"); //창 이름 Login
 		setLayout(null); //레이아웃 내가 원하는 위치로
 
+		ArrayList<Seat> table=new ArrayList();
+		table= u_inf.seatload();
+		String ck="";
+		Seat a;
+		//System.out.print(table);
 		
 		setSize(900,900);//전체 창 크기 설정
 		setBounds(510, 40,900,900);// 위치, 크기 설정
@@ -44,6 +50,7 @@ public class UserSeat  extends JFrame implements ActionListener{
 
 		b = new JButton[10];
 		b[0] = new JButton("1");
+		//b[0].setBackground(new Color(210,50,50));
 		b[1] = new JButton("2");
 		b[2] = new JButton("3");
 		b[3] = new JButton("4");
@@ -53,7 +60,13 @@ public class UserSeat  extends JFrame implements ActionListener{
 		b[7] = new JButton("8");
 		b[8] = new JButton("9");//메뉴 버튼 생성
 		//b[0].setFont(new Font("",Font.PLAIN,30));
-		
+		for(int i=0;i<9;i++) {		//좌석에 사람있으면 빨간색
+			a=table.get(i);
+			if(ck.equals(a.getexist_id())) {
+				
+			}
+			else b[i].setBackground(new Color(255,81,81));
+		}
 		for(i=0;i<9;i++)
 			grid2.add(b[i]);
 		grid2.setBounds(95, 50, 700, 700);
@@ -80,6 +93,7 @@ public class UserSeat  extends JFrame implements ActionListener{
 		 if(e.getSource()==confirm) {
 			 
 			 int result = u_inf.confirmSeat(num);
+			 
 			 try {
 					if(result==-1) throw new Exception();
 					u_inf.updateSeat(id, num);
