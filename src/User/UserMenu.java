@@ -26,10 +26,12 @@ public class UserMenu extends JFrame implements ActionListener, ItemListener{
 	User_info u_inf = new User_info();
 	int i, b_price=0, price=0, flag=0, b_num;
 	String userName, i_h, s_t_l, y_n;
+	int seatNum;
 
-	UserMenu(String str, String userName) {
+	UserMenu(String str, String userName, int seatNum) {
 		super(str);
 		this.userName = userName;
+		this.seatNum = seatNum;
 		setLayout(null); // 레이아웃 내가 원하는 위치로
 
 
@@ -185,7 +187,7 @@ public class UserMenu extends JFrame implements ActionListener, ItemListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getActionCommand() == "chat") {
-			UserChat clientChat = new UserChat(userName);
+			UserChat clientChat = new UserChat(seatNum);
 			new Thread(clientChat).start();
 		}
 		else if(e.getSource()==hot) {
